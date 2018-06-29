@@ -27,3 +27,27 @@ $ stack build
 ```
 $ stack ghci
 ```
+
+
+## ビルド & 実行
+```
+$ stack build
+
+$ stack exec my-project-exe
+# または、
+$ stack runghc app/Main.hs
+```
+
+
+## テスト実行
+```
+$ stack test
+```
+
+
+## HSpec
+TODO
+
+
+## QuickCheck
+TODO
