@@ -46,7 +46,14 @@ $ stack test
 
 
 ## HSpec
-TODO
+`src`ファイルと`Spec`ファイルを関連付けるために、
+`test/Spec.hs`ファイルに以下を記述。(他の行は削除する。)
+```
+{-# OPTIONS_GHC -F -pgmF hspec-discover #-}
+```
+### 例
+* `src/Math.hs`
+* `test/MathSpec.hs`
 
 
 ## QuickCheck
