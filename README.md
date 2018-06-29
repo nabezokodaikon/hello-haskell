@@ -3,6 +3,10 @@
 * [The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/README/)
 
 
+## 参考サイト
+* [本気で Haskell したい人向けの Stack チュートリアル](https://qiita.com/waddlaw/items/49874f4cf9b680e4b015)
+
+
 ## ビルドツール`stack`インストール
 ### Mac
 ```
