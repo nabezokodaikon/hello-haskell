@@ -46,3 +46,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - hello-haskell
+    - hspec
