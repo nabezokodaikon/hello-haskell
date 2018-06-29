@@ -18,3 +18,8 @@ $ stack setup
 $ stack build
 ```
 
+
+## REPL
+```
+$ stack ghci
+```
