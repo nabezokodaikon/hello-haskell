@@ -34,3 +34,7 @@ spec = do
       5: [1, 2] `shouldBe` [5, 1, 2]
     it "Union4" $
       [1 ,2, 3] `shouldBe` 1 : 2 : 3 : []
+    it "Access" $
+      "Steve Buscemi" !! 6 `shouldBe` 'B'
+    it "Access2" $
+      [1, 2, 3] !! 1 `shouldBe` 2
