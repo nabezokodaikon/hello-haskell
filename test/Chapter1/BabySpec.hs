@@ -25,3 +25,12 @@ spec = do
   describe "conanO'Brien" $ do
     it "Success" $
       conanO'Brien `shouldBe` "It's a=me, Conan O'Brien!"
+  describe "List" $ do
+    it "Union" $
+      [1, 2, 3, 4] ++ [9, 10, 11, 12] `shouldBe` [1, 2, 3, 4, 9, 10, 11, 12]
+    it "Union2" $
+      'A' : " SMALL CAT" `shouldBe` "A SMALL CAT"
+    it "Union3" $
+      5: [1, 2] `shouldBe` [5, 1, 2]
+    it "Union4" $
+      [1 ,2, 3] `shouldBe` 1 : 2 : 3 : []
