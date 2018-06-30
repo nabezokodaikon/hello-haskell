@@ -100,3 +100,28 @@ spec = do
       4 `elem` [1, 2, 3, 4] `shouldBe` True 
     it "elem2" $
       5 `elem` [1, 2, 3, 4] `shouldBe` False 
+  describe "Range" $ do
+    it "Int" $
+      [1..3] `shouldBe` [1, 2, 3]
+    it "String" $
+      ['b'..'d'] `shouldBe` ['b', 'c', 'd']
+    it "Step" $
+      [2, 1..5] `shouldBe` []
+    it "Step2" $
+      [2, 4..8] `shouldBe` [2, 4, 6, 8]
+    {-
+    it "Step3" $
+      [2, 2..8] -- 2が永遠に出力される。
+    -}
+    it "Step4" $
+      [5, 4..1] `shouldBe` [5, 4, 3, 2, 1]
+    it "Lazy" $
+      [13, 26..24 * 13] `shouldBe` take 24 [13, 26..]
+    it "cycle" $
+      take 10 (cycle [1, 2, 3]) `shouldBe` [1, 2, 3, 1, 2, 3, 1, 2, 3, 1]
+    it "cycle2" $
+      take 3 (cycle ["LOL "]) `shouldBe` ["LOL ", "LOL ", "LOL "]
+    it "repeat" $
+      take 3 (repeat 5) `shouldBe` [5, 5, 5]
+    it "replicate" $
+      replicate 3 10 `shouldBe` [10, 10, 10]
