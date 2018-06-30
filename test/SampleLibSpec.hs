@@ -3,6 +3,9 @@ module SampleLibSpec (spec) where
 import Test.Hspec
 import SampleLib
 
+main :: IO ()
+main = hspec spec
+
 spec :: Spec
 spec = do
   describe "addition" $ do
