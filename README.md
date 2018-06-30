@@ -7,6 +7,7 @@
 ### テスト系
 * [HSpec: A Testig Framework for Haskell](https://hspec.github.io/)
 * [hspec-example](https://github.com/hspec/hspec-example)
+* [Hspec](https://hspec.github.io/)
 
 ### 記事
 * [本気で Haskell したい人向けの Stack チュートリアル](https://qiita.com/waddlaw/items/49874f4cf9b680e4b015)
