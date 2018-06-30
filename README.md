@@ -6,6 +6,7 @@
 
 ### テスト系
 * [HSpec: A Testig Framework for Haskell](https://hspec.github.io/)
+* [hspec-example](https://github.com/hspec/hspec-example.)
 
 ### 記事
 * [本気で Haskell したい人向けの Stack チュートリアル](https://qiita.com/waddlaw/items/49874f4cf9b680e4b015)
@@ -44,29 +45,25 @@ $ stack runghc app/Main.hs
 
 
 ## HSpec
-### ファイル指定実行
-`test/Spec.hs`に以下を記述。(`stack init`のデフォルト)
-```
-main :: IO ()
-main = putStrLn "Test suite not yet implemented"
-```
-
-#### コマンド
-```
-$ stack runghc test/MathSpec
-```
-
-### 一括実行
+### ファイルの関連付け
 `src`ファイルと`Spec`ファイルを関連付けるために、
 `test/Spec.hs`ファイルに以下を記述。(他の行は削除する。)
 ```
 {-# OPTIONS_GHC -F -pgmF hspec-discover #-}
 ```
 
-#### 例
-* `src/Math.hs`
-* `test/MathSpec.hs`
+### ファイル指定実行
+テスト対象ファイルに以下を記述。
+```
+main :: IO ()
+main = hspec spec
+```
+#### コマンド
+```
+$ stack runghc test/MathSpec
+```
 
+### 一括実行
 #### コマンド
 ```
 $ stack test
