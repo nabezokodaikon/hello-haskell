@@ -1,7 +1,7 @@
-module Chapter1.Chapter1Spec (spec) where
+module Chapter1.BabySpec (spec) where
 
 import Test.Hspec
-import Chapter1.Chapter1
+import Chapter1.Baby
 
 main :: IO ()
 main = hspec spec
