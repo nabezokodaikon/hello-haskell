@@ -52,4 +52,51 @@ spec = do
       [3, 4, 2] < [3, 4] `shouldBe` False
     it "Comparison3" $
       [1, 2] == [1, 2] `shouldBe` True
-
+    it "head" $
+      head [3, 2, 1] `shouldBe` 3
+    it "tail" $
+      tail [3, 2, 1] `shouldBe` [2, 1]
+    it "last" $
+      last [3, 2, 1] `shouldBe` 1
+    it "init" $
+      init [3, 2, 1] `shouldBe` [3, 2]
+    it "head error" $
+      head [] `shouldThrow` anyException
+    it "length" $
+      length [1, 2, 4] `shouldBe` 3
+    it "null" $
+      null [] `shouldBe` True
+    it "not null" $
+      null [1, 2] `shouldBe` False
+    it "reverse" $
+      reverse [1, 2, 3] `shouldBe` [3, 2, 1]
+    it "take" $
+      take 3 [5, 4, 3, 2, 1] `shouldBe` [5, 4, 3]
+    it "take2" $
+      take 5 [5, 4, 3] `shouldBe` [5, 4, 3]
+    {-
+     - replでは正常だが、テストコードではエラーになる。
+     - 配列の型が必要？
+    it "take3" $
+      take 5 [] `shouldBe` []
+    -}
+    it "take4" $
+      take 0 [6, 4, 2] `shouldBe` []
+    it "drop" $
+      drop 2 [1, 2, 3, 4] `shouldBe` [3, 4]
+    it "drop2" $
+      drop 0 [1, 2, 3, 4] `shouldBe` [1, 2, 3, 4]
+    it "drop3" $
+      drop 10 [1, 2, 3, 4] `shouldBe` []
+    it "maximum" $
+      maximum [1, 9, 2, 3, 4] `shouldBe` 9
+    it "minimum" $
+      minimum [1, 9, 2, 3, 4] `shouldBe` 1
+    it "sum" $
+      sum [1, 2, 3, 4] `shouldBe` 10
+    it "product" $
+      product [1, 2, 3, 4] `shouldBe` 24 
+    it "elem" $
+      4 `elem` [1, 2, 3, 4] `shouldBe` True 
+    it "elem2" $
+      5 `elem` [1, 2, 3, 4] `shouldBe` False 
