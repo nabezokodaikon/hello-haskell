@@ -46,3 +46,10 @@ spec = do
       [6] : [[1, 2, 3], [4, 5]] `shouldBe` [[6], [1, 2, 3], [4, 5]] 
     it "List in List3" $
       [[6], [1, 2, 3], [4, 5]] !! 2 `shouldBe` [4, 5]
+    it "Comparison" $
+      [3, 4, 2] < [3, 4, 3] `shouldBe` True
+    it "Comparison2" $
+      [3, 4, 2] < [3, 4] `shouldBe` False
+    it "Comparison3" $
+      [1, 2] == [1, 2] `shouldBe` True
+
