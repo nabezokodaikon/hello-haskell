@@ -38,3 +38,11 @@ spec = do
       "Steve Buscemi" !! 6 `shouldBe` 'B'
     it "Access2" $
       [1, 2, 3] !! 1 `shouldBe` 2
+    it "List in List" $
+      [[1, 2, 3], [4, 5]] ++ [[6]] `shouldBe` [[1, 2, 3], [4, 5], [6]] 
+    it "List in List2 Failed" $
+      [6] : [[1, 2, 3], [4, 5]] `shouldNotBe` [[7], [1, 2, 3], [4, 5]] 
+    it "List in List2 Success" $
+      [6] : [[1, 2, 3], [4, 5]] `shouldBe` [[6], [1, 2, 3], [4, 5]] 
+    it "List in List3" $
+      [[6], [1, 2, 3], [4, 5]] !! 2 `shouldBe` [4, 5]
