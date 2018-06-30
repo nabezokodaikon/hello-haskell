@@ -125,3 +125,34 @@ spec = do
       take 3 (repeat 5) `shouldBe` [5, 5, 5]
     it "replicate" $
       replicate 3 10 `shouldBe` [10, 10, 10]
+  describe "Comprehension" $ do
+    it "Example1" $
+      [x * 2 | x <- [1..5]] `shouldBe` [2, 4, 6, 8, 10]
+    it "Predicate" $
+      [x * 2 | x <- [1..5], x * 2 >= 6] `shouldBe` [6, 8, 10]
+    it "Predicate2" $
+      [x | x <- [1..5], x `mod` 2 /= 0] `shouldBe` [1, 3, 5]
+    it "boomBangs" $
+      boomBangs [7..13] `shouldBe` ["BOOM!", "BOOM!", "BANG!", "BANG!"]
+    it "odd" $
+      odd 3 `shouldBe` True
+    it "odd2" $
+      odd 2 `shouldBe` False
+    it "even" $
+      even 3 `shouldBe` False
+    it "even2" $
+      even 2 `shouldBe` True
+    it "Example2" $
+      [ x | x <- [1..5], x /= 1, x /= 3] `shouldBe` [2, 4, 5]
+    it "Example3" $
+      [ x + y | x <- [1..3], y <- [10, 20] ] `shouldBe` [11, 21, 12, 22, 13, 23]
+    it "Example4" $
+      [ x + y | x <- [1..3], y <- [10, 20], x + y > 20 ] `shouldBe` [21, 22, 23]
+    it "length'" $
+      length' "abc" `shouldBe` 3
+    it "removeNonUppercase" $
+      removeNonUppercase "aBcDe" `shouldBe` "BD"
+    it "List in List" $
+      [ [ x | x <- xs, even x ] |
+         xs <- [[1, 2, 3], [4, 5, 6]] ]
+      `shouldBe` [[2], [4, 6]]
