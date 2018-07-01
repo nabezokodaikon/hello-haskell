@@ -167,3 +167,7 @@ spec = do
       zip [1, 2, 3] [3, 3, 3, 3] `shouldBe` [(1, 3), (2, 3), (3, 3)]
     it "zip3" $
       zip [1..] [3, 3, 3, 3] `shouldBe` [(1, 3), (2, 3), (3, 3), (4, 3)]
+  describe "rightTriangle" $ do
+    it "rightTriangle" $
+      head rightTriangle `shouldBe` (6, 8, 10)
+      
