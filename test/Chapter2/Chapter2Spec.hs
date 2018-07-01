@@ -8,7 +8,8 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-  describe "Confirm" $ do
-    it "sample" $
-      sample 2 `shouldBe` 4
-
+  describe "Type" $ do
+    it "removeNonUppercase" $
+      removeNonUppercase "AbC" `shouldBe` "AC"
+    it "addThree" $
+      addThree 1 2 3 `shouldBe` 6
