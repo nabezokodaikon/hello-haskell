@@ -156,3 +156,14 @@ spec = do
       [ [ x | x <- xs, even x ] |
          xs <- [[1, 2, 3], [4, 5, 6]] ]
       `shouldBe` [[2], [4, 6]]
+  describe "Tuple" $ do
+    it "Example1" $
+      fst (1, "a") `shouldBe` 1
+    it "Example2" $
+      snd (1, "a") `shouldBe` "a"
+    it "zip" $
+      zip [1, 2, 3] [3, 3, 3] `shouldBe` [(1, 3), (2, 3), (3, 3)]
+    it "zip2" $
+      zip [1, 2, 3] [3, 3, 3, 3] `shouldBe` [(1, 3), (2, 3), (3, 3)]
+    it "zip3" $
+      zip [1..] [3, 3, 3, 3] `shouldBe` [(1, 3), (2, 3), (3, 3), (4, 3)]
