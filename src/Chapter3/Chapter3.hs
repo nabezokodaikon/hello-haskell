@@ -37,7 +37,7 @@ head' :: [a] -> a
 head' [] = error "Empty list"
 head' (x : _) = x
 
-tell :: [a] -> String
+tell :: (Show a) => [a] -> String
 tell [] = "Empty"
 tell (x : []) = "One"
 tell (x : y : []) = "Two"
