@@ -13,3 +13,10 @@ spec = do
       removeNonUppercase "AbC" `shouldBe` "AC"
     it "addThree" $
       addThree 1 2 3 `shouldBe` 6
+  describe "2.2" $ do
+    it "factorial" $
+      factorial 3 `shouldBe` 6
+    it "circumference" $
+      circumference 3.5 `shouldBe` 21.99115 
+    it "circumference'" $
+      circumference' 3.5 `shouldBe` 21.991148575128552 
