@@ -61,3 +61,23 @@ spec = do
       firstLetter "" `shouldBe` "Empty"
     it "firstLetter" $
       firstLetter "Hello" `shouldBe` "Hello is H"
+  describe "Guard" $ do
+    it "bmiTell" $
+      bmiTell 18 `shouldBe` "You're underweight, you emo, you!"
+    it "bmiTell2" $
+      bmiTell 24 `shouldBe` "You're supposedly normal.\
+                            \ Pffft, Ibet you're ugly!"
+    it "bmiTell3" $
+      bmiTell 31 `shouldBe` "You're a whale, congratulations!"
+    it "bmiTell'" $
+      bmiTell' 70 170 `shouldBe` "You're underweight, you emo, you!"
+    it "max'" $
+      max' 2 4 `shouldBe` 4
+    it "max'2" $
+      max' 3 1 `shouldBe` 3
+    it "myCompare" $
+      2 `myCompare` 2 `shouldBe` EQ
+    it "myCompare2" $
+      2 `myCompare` 3 `shouldBe` LT
+    it "myCompare3" $
+      4 `myCompare` 3 `shouldBe` GT

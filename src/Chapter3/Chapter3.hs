@@ -49,3 +49,30 @@ badAdd (x : y : z : []) = x + y + z
 firstLetter :: String -> String
 firstLetter "" = "Empty"
 firstLetter all@(x : xs) = all ++ " is " ++ [x]
+
+bmiTell :: Double -> String
+bmiTell bmi
+  | bmi <= 18.5 = "You're underweight, you emo, you!"
+  | bmi <= 25.0 = "You're supposedly normal.\
+                   \ Pffft, Ibet you're ugly!"
+  | bmi <= 30.0 = "You're fat! Lose some weight, fatty!"
+  | otherwise = "You're a whale, congratulations!"
+
+bmiTell' :: Double -> Double -> String
+bmiTell' w h
+  | w / h ^ 2 <= 18.5 = "You're underweight, you emo, you!"
+  | w / h ^ 2 <= 25.0 = "You're supposedly normal.\
+                         \ Pffft, Ibet you're ugly!"
+  | w / h ^ 2 <= 30.0 = "You're fat! Lose some weight, fatty!"
+  | otherwise = "You're a whale, congratulations!"
+
+max' :: (Ord a) => a -> a -> a
+max' a b
+  | a <= b = b
+  | otherwise = a
+
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b
+  | a == b = EQ
+  | a <= b = LT
+  | otherwise = GT
