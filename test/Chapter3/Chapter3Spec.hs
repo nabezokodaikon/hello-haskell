@@ -81,3 +81,17 @@ spec = do
       2 `myCompare` 3 `shouldBe` LT
     it "myCompare3" $
       4 `myCompare` 3 `shouldBe` GT
+    it "bmiTell''" $
+      bmiTell'' 70 170 `shouldBe` "You're underweight, you emo, you!"
+    it "bmiTell'''" $
+      bmiTell''' 70 170 `shouldBe` "You're underweight, you emo, you!"
+    it "greet" $
+      greet "Juan" `shouldBe` niceGreeting ++ " Juan!"
+    it "greet2" $
+      greet "Hoge" `shouldBe` badGreeting ++ " " ++ "Hoge"
+    it "bmiTell''''" $
+      bmiTell'''' 70 170 `shouldBe` "You're underweight, you emo, you!"
+    it "calcBmis" $
+      calcBmis [(70, 170), (100, 150), (120, 180)] `shouldBe` [2.422145328719723e-3, 4.4444444444444444e-3, 3.703703703703704e-3]
+    it "calcBmis'" $
+      calcBmis' [(70, 170)] `shouldBe` ["You're underweight, you emo, you!"]
