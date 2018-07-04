@@ -108,3 +108,17 @@ spec = do
       example3_4 `shouldBe` 600
     it "calcBmis''" $
       calcBmis'' [(1, 2), (3, 40)] `shouldBe` [43]
+    it "head''" $
+      head'' [1, 2, 3] `shouldBe` 1
+    it "describeList" $
+      describeList [] `shouldBe` "The list is empty."
+    it "describeList2" $
+      describeList [1] `shouldBe` "The list is a singleton list."
+    it "describeList3" $
+      describeList [1, 2] `shouldBe` "The list is a longer list."
+    it "describeList'" $
+      describeList' [] `shouldBe` "The list is empty."
+    it "describeList'2" $
+      describeList' [1] `shouldBe` "The list is a singleton list."
+    it "describeList'3" $
+      describeList' [1, 2] `shouldBe` "The list is a longer list."

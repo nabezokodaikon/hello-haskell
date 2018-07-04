@@ -148,3 +148,19 @@ example3_4 = (let (a, b, c) = (1, 2, 3) in a + b + c) * 100
 
 calcBmis'' :: [(Double, Double)] -> [Double]
 calcBmis'' xs = [bmi | (w, h) <-xs, let bmi = w + h, bmi > 25.0]
+
+head'' :: [a] -> a
+head'' xs = case xs of [] -> error "No head for empty lists!"
+                       (x: _) -> x
+
+describeList :: [a] -> String
+describeList ls = "The list is "
+                  ++ case ls of [] -> "empty."
+                                [x] -> "a singleton list."
+                                xs -> "a longer list."
+
+describeList' :: [a] -> String
+describeList' ls = "The list is " ++ what ls
+  where what [] = "empty."
+        what [x] = "a singleton list."
+        what xs = "a longer list."
