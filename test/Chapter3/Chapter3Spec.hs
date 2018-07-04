@@ -95,3 +95,16 @@ spec = do
       calcBmis [(70, 170), (100, 150), (120, 180)] `shouldBe` [2.422145328719723e-3, 4.4444444444444444e-3, 3.703703703703704e-3]
     it "calcBmis'" $
       calcBmis' [(70, 170)] `shouldBe` ["You're underweight, you emo, you!"]
+  describe "let" $ do
+    it "cylinder" $
+      cylinder 10 5 `shouldBe` (2 * pi * 10 * 5) + 2 * (pi * 10 ^ 2)
+    it "example3_1" $
+      example3_1 `shouldBe` 42
+    it "example3_2" $
+      example3_2 `shouldBe` (25, 9, 4)
+    it "example3_3" $
+      example3_3 `shouldBe` (6000000, "Hey there!")
+    it "example3_4" $
+      example3_4 `shouldBe` 600
+    it "calcBmis''" $
+      calcBmis'' [(1, 2), (3, 40)] `shouldBe` [43]

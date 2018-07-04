@@ -126,3 +126,25 @@ calcBmis xs = [ bmi w h | (w, h) <- xs ]
 calcBmis' :: [(Double, Double)] -> [String]
 calcBmis' xs = [ bmi w h | (w, h) <- xs ]
   where bmi w h = bmiTell (w / h ^ 2)
+
+cylinder :: Double -> Double -> Double
+cylinder r h =
+  let sideArea = 2 * pi * r * h
+      topArea = pi * r ^ 2
+  in  sideArea + 2 * topArea
+
+example3_1 :: Int 
+example3_1 = 4 * (let a = 9 in a + 1) + 2
+
+example3_2 :: (Int, Int, Int)
+example3_2 = let square x = x * x in (square 5, square 3, square 2)
+
+example3_3 :: (Int, String)
+example3_3 = (let a = 100; b= 200; c = 300 in a * b * c,
+              let foo="Hey "; bar ="there!" in foo ++ bar)
+
+example3_4 :: Int
+example3_4 = (let (a, b, c) = (1, 2, 3) in a + b + c) * 100
+
+calcBmis'' :: [(Double, Double)] -> [Double]
+calcBmis'' xs = [bmi | (w, h) <-xs, let bmi = w + h, bmi > 25.0]
