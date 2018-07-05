@@ -79,7 +79,7 @@ TODO
 ### ガード
 * 多言語でいうcase文。
 * Trueのときのみ評価され、Falseの場合は下へ落ちていく。
-* otherwise
+* otherwiseで該当しなかったケースを評価する。
 ```
 bmiTell :: Double -> String
 bmiTell bmi
