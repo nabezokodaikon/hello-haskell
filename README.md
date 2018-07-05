@@ -73,3 +73,47 @@ $ stack test
 
 ## QuickCheck
 TODO
+
+
+## Memo
+### ガード
+* 多言語でいうcase文。
+* Trueのときのみ評価され、Falseの場合は下へ落ちていく。
+* otherwise
+```
+bmiTell :: Double -> String
+bmiTell bmi
+  | bmi <= 18.5 = "You're underweight, you emo, you!"
+  | bmi <= 25.0 = "You're supposedly normal.\
+                   \ Pffft, Ibet you're ugly!"
+  | bmi <= 30.0 = "You're fat! Lose some weight, fatty!"
+  | otherwise = "You're a whale, congratulations!"
+```
+
+### where
+* 使い回す計算結果や関数に名前を付ける。
+* 末尾に記述する。
+```
+bmiTell''' :: Double -> Double -> String
+bmiTell''' w h
+  | bmi <= skinny = "You're underweight, you emo, you!"
+  | bmi <= normal = "You're supposedly normal.\
+                    \ Pffft, Ibet you're ugly!"
+  | bmi <= fat = "You're fat! Lose some weight, fatty!"
+  | otherwise = "You're a whale, congratulations!"
+  where bmi = w / h ^ 2
+        skinny = 18.5
+        normal = 25.0
+        fat = 30.0
+```
+```
+bmiTell'''' :: Double -> Double -> String
+bmiTell'''' w h
+  | bmi <= skinny = "You're underweight, you emo, you!"
+  | bmi <= normal = "You're supposedly normal.\
+                    \ Pffft, Ibet you're ugly!"
+  | bmi <= fat = "You're fat! Lose some weight, fatty!"
+  | otherwise = "You're a whale, congratulations!"
+  where bmi = w / h ^ 2
+        (skinny, normal, fat) = (18.5, 25.0, 30.0)
+```
