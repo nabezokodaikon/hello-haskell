@@ -9,4 +9,12 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-  describe "Pattern match" $ do
+  describe "Chapter4" $ do
+    it "maximum'" $
+      maximum' [1, 5, 3] `shouldBe` 5
+    it "maximum'2" $
+      maximum' [1] `shouldBe` 1
+    {- TODO: replでは実行できた。
+    it "maximum'3" $
+      evaluate (maximum' []) `shouldThrow` anyException
+    -}
