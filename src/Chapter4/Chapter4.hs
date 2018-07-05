@@ -33,3 +33,10 @@ elem' a [] = False
 elem' a (x : xs)
   | a == x = True
   | otherwise = a `elem` xs
+
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x : xs) =
+  let l = [ a | a <- xs, a <= x ]
+      r = [ a | a <- xs, a > x ]
+  in quicksort l ++ [x] ++ quicksort r
