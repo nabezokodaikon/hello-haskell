@@ -35,3 +35,30 @@ flip' f = g
 
 flip'' :: (a -> b -> c) -> (b -> a -> c)
 flip'' f y x = f x y
+
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x : xs) = f x : map f xs
+
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' p (x : xs)
+      | p x = x : filter' p xs
+      | otherwise = filter' p xs
+
+largestDivisible :: Int -> Int -> Int
+largestDivisible a b = head (filter' p [a, (a - 1)..])
+  where p x = x `mod` b == 0
+
+chain :: Int -> [Int]
+chain 1 = [1]
+chain n
+    | even n = n : chain(n `div` 2)
+    | odd n = n : chain(n * 3 + 1)
+
+numLogChains :: Int
+numLogChains = length (filter isLong (map chain [1..100])) 
+  where isLong xs = length xs > 15
+
+numLogChains' :: Int
+numLogChains' = length (filter ((> 15) . length) (map chain [1..100]))

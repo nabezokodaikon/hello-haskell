@@ -49,3 +49,33 @@ spec = do
       zipWith div [2, 2..] [10, 8, 6, 4, 2] `shouldBe` [0, 0, 0, 0, 1]
     it "zipWith with flip div" $
       zipWith (flip' div) [2, 2..] [10, 8, 6, 4, 2] `shouldBe` [5, 4, 3, 2, 1]
+    it "map'" $
+      map' (+3) [1, 2, 3] `shouldBe` [4, 5, 6]
+    it "map'2" $
+      map' (replicate 3) [3..5] `shouldBe` [[3, 3, 3], [4, 4, 4], [5, 5, 5]]
+    it "map'3" $
+      map' (map' (^2)) [[1, 2], [3, 4]] `shouldBe` [[1, 4], [9, 16]]
+    it "map'4" $
+      map' fst [(1, 2), (3, 4)] `shouldBe` [1, 3]
+    it "filter'" $
+      filter' (> 3) [1, 2, 3, 4, 5] `shouldBe` [4, 5]
+    it "filter'2" $
+      filter' (== 3) [1, 2, 3, 4, 5] `shouldBe` [3]
+    it "filter'3" $
+      filter' (`elem` ['a'..'z']) "Hello!" `shouldBe` "ello"
+    it "filter'4" $
+      filter' (\x -> x < 15 && odd x) [1, 2, 3, 14, 15, 16] `shouldBe` [1, 3]
+    it "filter'5" $
+      filter' (odd) (filter' (< 15) [1, 2, 3, 14, 15, 16]) `shouldBe` [1, 3]
+    it "largestDivisible" $
+      largestDivisible 10 4 `shouldBe` 8
+    it "takeWhile Example" $
+      takeWhile (/= ' ') "Hello World!" `shouldBe` "Hello"
+    it "takeWhile Example2" $
+      sum (takeWhile (< 10 ^ 2) (filter odd (map (^2) [1..]))) `shouldBe` 1 + 9 + 25 + 49 + 81
+    it "takeWhile Example3" $
+      sum (takeWhile (< 10 ^ 2) [m | m <- [n ^ 2 | n <- [1..]], odd m]) `shouldBe` 165
+    it "chain" $
+      chain 3 `shouldBe` [3, 10, 5, 16, 8, 4, 2, 1]
+    it "numLogChains" $
+      numLogChains `shouldBe` numLogChains'
