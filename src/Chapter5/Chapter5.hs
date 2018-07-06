@@ -62,3 +62,10 @@ numLogChains = length (filter isLong (map chain [1..100]))
 
 numLogChains' :: Int
 numLogChains' = length (filter ((> 15) . length) (map chain [1..100]))
+
+numLogChains'' :: Int
+numLogChains'' = length (filter (\xs -> length xs > 15)
+                                (map chain [1..100]))
+
+flip''' :: (a -> b -> c) -> b -> a -> c
+flip''' f = \x y -> f y x

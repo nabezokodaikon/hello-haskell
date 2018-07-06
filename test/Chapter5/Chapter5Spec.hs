@@ -83,3 +83,19 @@ spec = do
       ((map (+) [0..10]) !! 5) 3 `shouldBe` 8
     it "multiple2" $
       ((map (*) [0..10]) !! 5) 3 `shouldBe` 15
+    it "numLogChains2" $
+      numLogChains `shouldBe` numLogChains''
+    it "map5" $
+      map (+3) [1, 6, 3, 2] `shouldBe` map (\x -> x + 3) [1, 6, 3, 2]
+    it "zipWith lambda" $
+      zipWith (\a b -> a * b) [1, 2, 3] [4, 5, 6] `shouldBe` [4, 10, 18]
+    it "lambda pattern match" $
+      map (\(a, b) -> a + b) [(1, 2), (3, 4)] `shouldBe` [3, 7]
+    it "flip'''" $
+      flip''' zip [1, 2, 3] "abc" `shouldBe` [('a', 1), ('b', 2), ('c', 3)]
+    it "flip" $
+      zipWith (flip (++)) ["love you", "love me"] ["i ", "you "] `shouldBe` ["i love you", "you love me"]
+    it "Unused flip" $
+      zipWith (++) ["love you", "love me"] ["i ", "you "] `shouldBe` ["love youi ", "love meyou "]
+    it "flip2" $
+      map (flip subtract 20) [1, 2, 3, 4] `shouldBe` [19, 18, 17, 16]
