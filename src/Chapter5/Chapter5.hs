@@ -69,3 +69,15 @@ numLogChains'' = length (filter (\xs -> length xs > 15)
 
 flip''' :: (a -> b -> c) -> b -> a -> c
 flip''' f = \x y -> f y x
+
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+{-
+   ラムダ式(\acc x -> acc + x)は(+)と同じ。
+   foldl (+) 0 はリストを取る関数を返すので、引数のxsは省略できる。
+   一般に foo a = bar b a は、カリー化により、
+   foo = bar b に書き換えれる。
+-}
+sum'' :: (Num a) => [a] -> a
+sum'' = foldl (+) 0

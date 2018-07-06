@@ -99,3 +99,7 @@ spec = do
       zipWith (++) ["love you", "love me"] ["i ", "you "] `shouldBe` ["love youi ", "love meyou "]
     it "flip2" $
       map (flip subtract 20) [1, 2, 3, 4] `shouldBe` [19, 18, 17, 16]
+    it "sum'" $
+      sum' [1, 2, 3] `shouldBe` 6
+    it "sum''" $
+      sum' [1, 2, 3] `shouldBe` sum'' [1, 2, 3]
