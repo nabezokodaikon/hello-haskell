@@ -79,3 +79,7 @@ spec = do
       chain 3 `shouldBe` [3, 10, 5, 16, 8, 4, 2, 1]
     it "numLogChains" $
       numLogChains `shouldBe` numLogChains'
+    it "multiple" $
+      ((map (+) [0..10]) !! 5) 3 `shouldBe` 8
+    it "multiple2" $
+      ((map (*) [0..10]) !! 5) 3 `shouldBe` 15
