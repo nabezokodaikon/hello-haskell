@@ -103,3 +103,7 @@ spec = do
       sum' [1, 2, 3] `shouldBe` 6
     it "sum''" $
       sum' [1, 2, 3] `shouldBe` sum'' [1, 2, 3]
+    it "map''" $
+      map' (\x -> x * 2) [1, 2, 3] `shouldBe` [2, 4, 6]
+    it "elem'" $
+      elem' 2 [1, 2, 3] `shouldBe` True

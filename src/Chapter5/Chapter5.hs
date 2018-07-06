@@ -81,3 +81,15 @@ sum' xs = foldl (\acc x -> acc + x) 0 xs
 -}
 sum'' :: (Num a) => [a] -> a
 sum'' = foldl (+) 0
+
+{-
+`++`関数は`:`関数よりも遅いため、
+リストから新しいリストを構築する際には、
+基本的に右畳み込みを使う。
+右は無限リストに対して動作するのに対し、左は動作しない。
+-}
+map'' :: (a -> b) -> [a] -> [b]
+map'' f xs = foldr (\x acc -> f x : acc) [] xs
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' y ys = foldr (\x acc -> if x == y then True else acc) False ys
