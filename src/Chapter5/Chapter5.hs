@@ -93,3 +93,10 @@ map'' f xs = foldr (\x acc -> f x : acc) [] xs
 
 elem' :: (Eq a) => a -> [a] -> Bool
 elem' y ys = foldr (\x acc -> if x == y then True else acc) False ys
+
+{-
+   foldl1とfoldr1は、空リストを渡すとランタイムエラーになる。
+-}
+maximum' :: (Ord a) => [a] -> a
+maximum' = foldl1 max
+{- maximum' xs = foldl1 max xs -}

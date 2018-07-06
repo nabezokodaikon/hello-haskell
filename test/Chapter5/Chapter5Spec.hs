@@ -107,3 +107,5 @@ spec = do
       map' (\x -> x * 2) [1, 2, 3] `shouldBe` [2, 4, 6]
     it "elem'" $
       elem' 2 [1, 2, 3] `shouldBe` True
+    it "maximum'" $
+      maximum' [1, 2, 3] `shouldBe` 3
