@@ -100,3 +100,20 @@ elem' y ys = foldr (\x acc -> if x == y then True else acc) False ys
 maximum' :: (Ord a) => [a] -> a
 maximum' = foldl1 max
 {- maximum' xs = foldl1 max xs -}
+
+reverse' :: [a] -> [a]
+reverse' = foldl (\acc x -> x : acc) [] 
+
+reverse'' :: [a] -> [a]
+reverse'' = foldl(flip (:)) []
+
+product' :: (Num a) => [a] -> a
+product' = foldl (*) 1
+{- product' = foldl (\acc x -> acc * x) 1 -}
+
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p = foldr (\x acc -> if p x then x : acc else acc) []
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
+

@@ -109,3 +109,14 @@ spec = do
       elem' 2 [1, 2, 3] `shouldBe` True
     it "maximum'" $
       maximum' [1, 2, 3] `shouldBe` 3
+    it "reverse'" $
+      reverse' [1, 2, 3] `shouldBe` [3, 2, 1]
+    it "reverse''" $
+      reverse'' [1, 2, 3] `shouldBe` [3, 2, 1]
+    it "product'" $
+      product' [1, 2, 3] `shouldBe` 6
+    it "filter''" $
+      filter'' (even) [1, 2, 3, 4, 5] `shouldBe` [2, 4]
+    it "last'" $
+      last' [1, 2, 3] `shouldBe` 3
+
