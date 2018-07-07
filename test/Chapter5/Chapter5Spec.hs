@@ -127,3 +127,13 @@ spec = do
       flip (:) (flip (:) (flip (:) (flip (:) [] 3) 4) 5) 6 `shouldBe` [6, 5, 4, 3]
     it "and'" $
       and' (repeat False) `shouldBe` False
+    it "scanl" $
+      scanl (+) 0 [3, 5, 2, 1] `shouldBe` [0, 3, 8, 10, 11]
+    it "sclanr" $
+      scanr (+) 0 [3, 5, 2, 1] `shouldBe` [11, 8, 3, 1, 0]
+    it "scanl" $
+      scanl (\acc x -> if x > acc then x else acc) 0 [5, 3, 7] `shouldBe` [0, 5, 5, 7]
+    it "scanr" $
+      scanl (flip (:)) [] [3, 2, 1] `shouldBe` [[], [3], [2, 3], [1, 2, 3]]
+    it "squrtSums" $
+      sqrtSums `shouldBe` 131 

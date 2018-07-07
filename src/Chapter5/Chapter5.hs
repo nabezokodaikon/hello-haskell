@@ -123,3 +123,6 @@ and' xs = foldr (&&) True xs
 {- (&&) :: Bool -> Bool -> Bool -}
 {- True && x = x -}
 {- False && _ = False -}
+
+sqrtSums :: Int
+sqrtSums = length (takeWhile (< 1000) (scanl (+) 0 (map sqrt [1..]))) 
