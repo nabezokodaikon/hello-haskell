@@ -117,3 +117,9 @@ filter'' p = foldr (\x acc -> if p x then x : acc else acc) []
 last' :: [a] -> a
 last' = foldl1 (\_ x -> x)
 
+and' :: [Bool] -> Bool
+and' xs = foldr (&&) True xs
+
+{- (&&) :: Bool -> Bool -> Bool -}
+{- True && x = x -}
+{- False && _ = False -}

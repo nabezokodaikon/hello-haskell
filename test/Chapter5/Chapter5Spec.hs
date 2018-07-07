@@ -125,3 +125,5 @@ spec = do
       (+) ((+) ((+) ((+) 0 3) 4) 5) 6 `shouldBe` 18
     it "foldl flip example" $
       flip (:) (flip (:) (flip (:) (flip (:) [] 3) 4) 5) 6 `shouldBe` [6, 5, 4, 3]
+    it "and'" $
+      and' (repeat False) `shouldBe` False
