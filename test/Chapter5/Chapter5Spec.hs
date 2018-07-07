@@ -119,4 +119,9 @@ spec = do
       filter'' (even) [1, 2, 3, 4, 5] `shouldBe` [2, 4]
     it "last'" $
       last' [1, 2, 3] `shouldBe` 3
-
+    it "foldr example" $
+      (+) 3 ((+) 4 ((+) 5 ((+) 6 0))) `shouldBe` 18
+    it "foldl example" $
+      (+) ((+) ((+) ((+) 0 3) 4) 5) 6 `shouldBe` 18
+    it "foldl flip example" $
+      flip (:) (flip (:) (flip (:) (flip (:) [] 3) 4) 5) 6 `shouldBe` [6, 5, 4, 3]
