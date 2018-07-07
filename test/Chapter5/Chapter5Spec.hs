@@ -137,3 +137,13 @@ spec = do
       scanl (flip (:)) [] [3, 2, 1] `shouldBe` [[], [3], [2, 3], [1, 2, 3]]
     it "squrtSums" $
       sqrtSums `shouldBe` 131 
+    it "$" $
+      sqrt 3 + 4 + 9 `shouldBe` sqrt 3 + (4 + 9)
+    it "$2" $
+      (sqrt $ 3 + 4 + 9) `shouldBe` sqrt (3 + 4 + 9)
+    it "$3" $
+      sum (filter (> 10) (map (* 2) [2..10])) `shouldBe` (sum $ filter (> 10) (map (* 2) [2..10]))
+    it "$4" $
+      (sum $ filter (> 10) (map (* 2) [2..10])) `shouldBe` (sum $ filter (> 10) $ map (* 2) [2..10])
+    it "$5" $
+      map ($ 3) [(4 +), (10 *), (^2)] `shouldBe` [7, 30, 9]
