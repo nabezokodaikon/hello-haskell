@@ -161,4 +161,7 @@ spec = do
     it "Function composition3" $
       replicate 2 (product (map (* 3) (zipWith max [1, 2] [4, 5]))) `shouldBe`
       (replicate 2 . product . map (* 3) $ zipWith max [1, 2] [4, 5])
-      
+    it "ポイントフリースタイル" $
+      sum''' [1, 2, 3] `shouldBe` sum'''' [1, 2, 3]
+    it "oddSquareSum" $
+      oddSquareSum `shouldBe` oddSquareSum'
