@@ -147,3 +147,8 @@ spec = do
       (sum $ filter (> 10) (map (* 2) [2..10])) `shouldBe` (sum $ filter (> 10) $ map (* 2) [2..10])
     it "$5" $
       map ($ 3) [(4 +), (10 *), (^2)] `shouldBe` [7, 30, 9]
+    it "negate" $ {- 右の関数から適用される。 -}
+      map (\x -> negate (abs x)) [1, -2, 3] `shouldBe` map (negate . abs) [1, -2, 3] 
+    it "negate2" $ {- f (g (z x)) は、(f . g . z) と等価 -}
+      map (\xs -> negate (sum (tail xs))) [[1..5], [3..6]] `shouldBe`
+      map (negate . sum . tail) [[1..5], [3..6]]
