@@ -152,3 +152,13 @@ spec = do
     it "negate2" $ {- f (g (z x)) は、(f . g . z) と等価 -}
       map (\xs -> negate (sum (tail xs))) [[1..5], [3..6]] `shouldBe`
       map (negate . sum . tail) [[1..5], [3..6]]
+    it "Function composition" $
+      sum (replicate 5 (max 6 8)) `shouldBe`
+      (sum . replicate 5) (max 6 8)
+    it "Function composition2" $
+      sum (replicate 5 (max 6 8)) `shouldBe`
+      (sum . replicate 5 $ max 6 8)
+    it "Function composition3" $
+      replicate 2 (product (map (* 3) (zipWith max [1, 2] [4, 5]))) `shouldBe`
+      (replicate 2 . product . map (* 3) $ zipWith max [1, 2] [4, 5])
+      
