@@ -1,5 +1,6 @@
 module Chapter6.Chapter6Spec (spec) where
 
+import Data.Char
 import Data.List
 import Test.Hspec
 import Control.Exception (evaluate)
@@ -33,3 +34,11 @@ spec = do
       "world" `isIn` "hello world" `shouldBe` True
     it "isIn3" $
       "aaa" `isIn` "hello world" `shouldBe` False 
+    it "ord" $
+      ord 'a' `shouldBe` 97
+    it "chr" $
+      chr 97 `shouldBe` 'a'
+    it "encode" $
+      encode 2 "hello" `shouldBe` "jgnnq"
+    it "decode" $
+      decode 2 "jgnnq" `shouldBe` "hello"
