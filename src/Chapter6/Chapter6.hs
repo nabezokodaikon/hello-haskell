@@ -1,6 +1,7 @@
 module Chapter6.Chapter6 where
 
 import Data.Char
+import Data.Maybe
 import Data.List
 {- import Data.List (nub, sort) -}
 {- import qualified Data.List (nub) -}
@@ -26,3 +27,18 @@ encode offset msg = map (chr . (+ offset) . ord) msg
 
 decode :: Int -> String -> String
 decode shift msg = encode (negate shift) msg
+
+digitSum :: Int -> Int
+{-
+digitSum d = sum (map (\c -> digitToInt c) (show d))
+digitSum d = sum (map (digitToInt) $ show d)
+digitSum d = sum (map digitToInt $ show d)
+digitSum d = sum . map digitToInt $ show d
+-}
+digitSum = sum . map digitToInt . show
+
+firstTo40 :: Maybe Int
+firstTo40 = find (\x -> digitSum x == 40) [1..]
+
+firstTo :: Int -> Maybe Int
+firstTo n = find (\x -> digitSum x == n) [1..]

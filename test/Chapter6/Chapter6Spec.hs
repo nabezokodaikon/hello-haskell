@@ -42,3 +42,13 @@ spec = do
       encode 2 "hello" `shouldBe` "jgnnq"
     it "decode" $
       decode 2 "jgnnq" `shouldBe` "hello"
+    it "digitSum" $
+      digitSum 123 `shouldBe` 6
+    it "Maybe example" $
+      find (> 4) [3, 4, 5, 6] `shouldBe` Just 5
+    it "Maybe example2" $
+      find (> 10) [3, 4, 5, 6] `shouldBe` Nothing
+    it "firstTo40" $
+      firstTo40 `shouldBe` Just 49999
+    it "firstTo" $
+      firstTo 27 `shouldBe` Just 999
