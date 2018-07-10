@@ -75,6 +75,11 @@ $ stack test
 TODO
 
 
+## tag
+1. `stack install hasktags`
+1. `~/.local/bin/hasktags . -c`
+
+
 ## Memo
 ### ガード
 * 多言語でいうcase文。
