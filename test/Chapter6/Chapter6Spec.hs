@@ -23,3 +23,13 @@ spec = do
       (group $ sort [1, 2, 3, 1, 2]) `shouldBe` [[1, 1], [2, 2], [3]]
     it "wordNums" $
       wordNums "hello world hello world !!" `shouldBe` [("!!", 1), ("hello", 2), ("world", 2)]
+    it "isPrefixOf" $
+      "hello" `isPrefixOf` "hello world" `shouldBe` True 
+    it "isPrefixOf2" $
+      "world" `isPrefixOf` "hello world" `shouldBe` False 
+    it "isIn" $
+      "hello" `isIn` "hello world" `shouldBe` True
+    it "isIn2" $
+      "world" `isIn` "hello world" `shouldBe` True
+    it "isIn3" $
+      "aaa" `isIn` "hello world" `shouldBe` False 
