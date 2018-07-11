@@ -52,3 +52,13 @@ spec = do
       firstTo40 `shouldBe` Just 49999
     it "firstTo" $
       firstTo 27 `shouldBe` Just 999
+    it "findKey" $
+      findKey "bonnie" phoneBook `shouldBe` "452-2928"
+    it "findKey'" $
+      findKey' "bonnie" phoneBook `shouldBe` Just "452-2928"
+    it "findKey'2" $
+      findKey' "abc" phoneBook `shouldBe` Nothing
+    it "findKey''" $
+      findKey'' "bonnie" phoneBook `shouldBe` Just "452-2928"
+    it "findKey''2" $
+      findKey'' "abc" phoneBook `shouldBe` Nothing
