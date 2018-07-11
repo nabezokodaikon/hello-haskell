@@ -4,7 +4,7 @@ import Data.Char
 import Data.List
 import qualified Data.Map as Map
 import Test.Hspec
-import Control.Exception (evaluate)
+import Control.Exception
 import Chapter6.Chapter6
 import Chapter6.Geometry
 
@@ -98,3 +98,5 @@ spec = do
       cuboidVolume 3 2 1 `shouldBe` 6.0
     it ("cuboidArea") $
       cuboidArea 3 2 1 `shouldBe` 22.0
+    it ("example") $
+      evaluate (1 `div` 0 :: Int) `shouldThrow` anyException
