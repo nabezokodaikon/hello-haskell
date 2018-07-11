@@ -6,6 +6,7 @@ import qualified Data.Map as Map
 import Test.Hspec
 import Control.Exception (evaluate)
 import Chapter6.Chapter6
+import Chapter6.Geometry
 
 main :: IO ()
 main = hspec spec
@@ -85,3 +86,15 @@ spec = do
       Map.fromListWith max [(2, 3), (2, 5), (3, 5), (3, 2)] `shouldBe` Map.fromList [(2, 5), (3, 5)]
     it ("fromListWith2") $
       Map.fromListWith (+) [(2, 3), (2, 5), (3, 5), (3, 2)] `shouldBe` Map.fromList [(2, 8), (3, 7)]
+    it ("sphereVolume") $
+      sphereVolume 4 `shouldBe` 268.08258
+    it ("sphereArea") $
+      sphereArea 2 `shouldBe` 50.265484
+    it ("cuboidArea") $
+      cubeArea 3.0 `shouldBe` 54.0
+    it ("cubeVolume") $
+      cubeVolume 3 `shouldBe` 27.0
+    it ("cuboidVolume") $
+      cuboidVolume 3 2 1 `shouldBe` 6.0
+    it ("cuboidArea") $
+      cuboidArea 3 2 1 `shouldBe` 22.0
