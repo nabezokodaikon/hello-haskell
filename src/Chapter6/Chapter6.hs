@@ -1,6 +1,7 @@
 module Chapter6.Chapter6 where
 
 import Data.Char
+import qualified Data.Map as Map
 import Data.Maybe
 import Data.List
 {- import Data.List (nub, sort) -}
@@ -64,3 +65,28 @@ findKey'' key xs = foldr
   (\(k, v) acc -> if key == k then Just v else acc)
   Nothing
   xs
+
+phoneBook' :: Map.Map String String
+phoneBook' = Map.fromList phoneBook
+
+string2digits :: String -> [Int]
+{- string2digits s = map(\c -> digitToInt c) (filter(\c -> isDigit c) s)  -}
+{- string2digits s = map(digitToInt) (filter(isDigit) s)  -}
+{- string2digits s = map digitToInt (filter isDigit s)  -}
+string2digits = map digitToInt . filter isDigit 
+
+phoneBook'' =
+  [("betty", "555-2938")
+  ,("betty", "555-3000")
+  ,("betty", "555-4000")
+  ,("bonnie", "452-2928")
+  ,("bonnie", "452-4000")
+  ,("patsy", "493-2928")
+  ]
+
+phoneBookToMap :: (Ord k) => [(k, String)] -> Map.Map k String
+phoneBookToMap xs = Map.fromListWith add xs 
+  where add n1 n2 = n1 ++ ", " ++ n2
+
+phoneBookToMap' :: (Ord k) => [(k, a)] -> Map.Map k [a]
+phoneBookToMap' xs = Map.fromListWith (++) $ map (\(k, v) -> (k, [v])) xs

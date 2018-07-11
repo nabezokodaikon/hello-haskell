@@ -2,6 +2,7 @@ module Chapter6.Chapter6Spec (spec) where
 
 import Data.Char
 import Data.List
+import qualified Data.Map as Map
 import Test.Hspec
 import Control.Exception (evaluate)
 import Chapter6.Chapter6
@@ -62,3 +63,25 @@ spec = do
       findKey'' "bonnie" phoneBook `shouldBe` Just "452-2928"
     it "findKey''2" $
       findKey'' "abc" phoneBook `shouldBe` Nothing
+    it "fromList" $
+      Map.lookup "betty" phoneBook' `shouldBe` (Just . snd $ phoneBook !! 0)
+    it "fromList2" $
+      Map.lookup "aaa" phoneBook' `shouldBe` Nothing
+    it "insert" $
+      Map.lookup "grace" (Map.insert "grace" "341-9021" phoneBook') `shouldBe` Just "341-9021"
+    it "size" $
+      Map.size phoneBook' `shouldBe` 3
+    it "string2digits" $
+      string2digits "123-456" `shouldBe` [1, 2, 3, 4, 5, 6]
+    it "string2digits2" $
+      Map.lookup "betty" (Map.map string2digits phoneBook') `shouldBe` Just [5, 5, 5, 2, 9, 3, 8]
+    it "phoneBookToMap" $
+      (Map.lookup "betty" $ phoneBookToMap phoneBook'') `shouldBe` Just "555-4000, 555-3000, 555-2938"
+    it "phoneBookToMap" $
+      (Map.lookup "patsy" $ phoneBookToMap phoneBook'') `shouldBe` Just "493-2928"
+    it ("phoneBookToMap'") $
+      (Map.lookup "betty" $ phoneBookToMap' phoneBook'') `shouldBe` Just ["555-4000", "555-3000", "555-2938"]
+    it ("fromListWith") $
+      Map.fromListWith max [(2, 3), (2, 5), (3, 5), (3, 2)] `shouldBe` Map.fromList [(2, 5), (3, 5)]
+    it ("fromListWith2") $
+      Map.fromListWith (+) [(2, 3), (2, 5), (3, 5), (3, 2)] `shouldBe` Map.fromList [(2, 8), (3, 7)]
