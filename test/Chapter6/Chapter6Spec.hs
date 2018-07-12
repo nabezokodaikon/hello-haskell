@@ -7,6 +7,9 @@ import Test.Hspec
 import Control.Exception
 import Chapter6.Chapter6
 import Chapter6.Geometry
+import qualified Chapter6.Geometry.Sphere as Sphere
+import qualified Chapter6.Geometry.Cuboid as Cuboid
+import qualified Chapter6.Geometry.Cube as Cube
 
 main :: IO ()
 main = hspec spec
@@ -100,3 +103,15 @@ spec = do
       cuboidArea 3 2 1 `shouldBe` 22.0
     it ("example") $
       evaluate (1 `div` 0 :: Int) `shouldThrow` anyException
+    it ("sphereVolume2") $
+      Sphere.volume 4 `shouldBe` 268.08258
+    it ("sphereArea2") $
+      Sphere.area 2 `shouldBe` 50.265484
+    it ("cuboidArea2") $
+      Cube.area 3.0 `shouldBe` 54.0
+    it ("cubeVolume2") $
+      Cube.volume 3 `shouldBe` 27.0
+    it ("cuboidVolume2") $
+      Cuboid.volume 3 2 1 `shouldBe` 6.0
+    it ("cuboidArea2") $
+      Cuboid.area 3 2 1 `shouldBe` 22.0
