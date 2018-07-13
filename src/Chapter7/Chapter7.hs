@@ -1,4 +1,11 @@
-module Chapter7.Chapter7 where
+module Chapter7.Chapter7
+( Point(..)
+, Shape'(..)
+, area'
+, nudge
+, baseCircle
+, baseRect
+) where
 
 data Shape = Circle Float Float Float |
              Rectangle Float Float Float Float
