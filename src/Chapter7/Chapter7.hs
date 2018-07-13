@@ -7,6 +7,9 @@ module Chapter7.Chapter7
 , nudge
 , baseCircle
 , baseRect
+, Person(..)
+, firstName
+, Car(..)
 ) where
 
 data Shape = Circle Float Float Float |
@@ -42,3 +45,11 @@ baseRect w h = Rectangle' (Point 0 0) (Point w h)
 
 data Person = Person String String Int Float String String
   deriving (Show, Eq)
+
+firstName :: Person -> String
+firstName (Person v _ _ _ _ _) = v
+
+data Car = Car { company :: String
+               , model :: String
+               , year :: Int
+               } deriving (Show, Eq)

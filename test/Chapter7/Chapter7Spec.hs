@@ -28,3 +28,14 @@ spec = do
       nudge (baseCircle 10) 1 2 `shouldBe` Circle' (Point 1 2) 10
     it "nudge of Rectangle2" $
       nudge (baseRect 2 3) 1 2 `shouldBe` Rectangle' (Point 1 2) (Point 3 5)
+    it "record syntax" $
+      Person "Buddy" "Finklestein" 43 184.2 "526-2928" "Chocolate" `shouldBe`
+      Person "Buddy" "Finklestein" 43 184.2 "526-2928" "Chocolate"
+    it "firstName" $
+      (firstName $ Person "Buddy" "Finklestein" 43 184.2 "526-2928" "Chocolate") `shouldBe`
+      "Buddy"
+    it "Car" $
+      model Car { company = "Ford", model = "Mustang", year = 1967 } `shouldBe` "Mustang"
+    it "Car2" $
+      Car { company = "Ford", model = "Mustang", year = 1967 } { year = 2013 } `shouldBe`
+      Car { company = "Ford", model = "Mustang", year = 2013 }
