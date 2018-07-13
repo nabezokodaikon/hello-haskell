@@ -1,4 +1,4 @@
-module Shapes
+module Chapter7.Shapes
 ( Point
 , Shape
 , area
