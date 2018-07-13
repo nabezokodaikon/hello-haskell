@@ -1,5 +1,7 @@
 module Chapter7.Chapter7
-( Point(..)
+( Shape(..)
+, area
+, Point(..)
 , Shape'(..)
 , area'
 , nudge
@@ -37,3 +39,6 @@ baseCircle r = Circle' (Point 0 0) r
 
 baseRect :: Float -> Float -> Shape'
 baseRect w h = Rectangle' (Point 0 0) (Point w h)
+
+data Person = Person String String Int Float String String
+  deriving (Show, Eq)
