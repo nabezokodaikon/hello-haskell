@@ -39,3 +39,10 @@ spec = do
     it "Car2" $
       Car { company = "Ford", model = "Mustang", year = 1967 } { year = 2013 } `shouldBe`
       Car { company = "Ford", model = "Mustang", year = 2013 }
+    it "tellCar" $
+      tellCar Car { company = "Ford", model = "Mustang", year = 1967 } `shouldBe`
+      "This Ford Mustang was made in 1967"
+    it "tellCar'" $
+      tellCar' (Car' "Ford" "Mustang" 1967) `shouldBe` "This Ford Mustang was made in 1967"
+    it "tellCar'2" $
+      tellCar' (Car' "Ford" "Mustang" "1967") `shouldBe` "This Ford Mustang was made in \"1967\""
