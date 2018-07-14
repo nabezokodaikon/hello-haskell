@@ -46,3 +46,9 @@ spec = do
       tellCar' (Car' "Ford" "Mustang" 1967) `shouldBe` "This Ford Mustang was made in 1967"
     it "tellCar'2" $
       tellCar' (Car' "Ford" "Mustang" "1967") `shouldBe` "This Ford Mustang was made in \"1967\""
+    it "vplus" $
+      Vector 1 2 3 `vplus` Vector 4 5 6 `shouldBe` Vector 5 7 9
+    it "dotProd" $
+      Vector 1 2 3 `dotProd` Vector 4 5 6 `shouldBe` 32
+    it "vmult" $
+      Vector 1 2 3 `vmult` Vector 4 5 6 `shouldBe` Vector 4 10 18
