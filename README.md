@@ -88,6 +88,17 @@ TODO
 data Bool = False | True
 ```
 
+### 型クラス
+何らかの振る舞いを定義するインターフェイス。
+型クラスには以下のものがある。
+* Eq
+* Ord
+* Enum
+* Bounded
+* Show
+* Read
+
+
 ### ガード
 * 多言語でいうcase文。
 * Trueのときのみ評価され、Falseの場合は下へ落ちていく。
