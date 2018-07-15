@@ -37,3 +37,17 @@ spec = do
       read mysteryDude `shouldBe` mikeD
     it "Maybe Read" $
       (read "Just 3" :: Maybe Int) `shouldBe` Just 3
+    it "Bool" $
+      True `compare` False `shouldBe` GT
+    it "Bool2" $
+      True > False `shouldBe` True
+    it "Bool3" $
+      True < False `shouldBe` False
+    it "Maybe" $
+      Nothing < Just 100 `shouldBe` True
+    it "Maybe2" $
+      Nothing > Just (-9999) `shouldBe` False
+    it "Maybe3" $
+      Just 3 `compare` Just 2 `shouldBe` GT
+    it "Maybe4" $
+      Just 100 > Just 50 `shouldBe` True
