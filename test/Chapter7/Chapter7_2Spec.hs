@@ -51,3 +51,30 @@ spec = do
       Just 3 `compare` Just 2 `shouldBe` GT
     it "Maybe4" $
       Just 100 > Just 50 `shouldBe` True
+    it "Day" $
+      Wendnesday `shouldBe` Wendnesday
+    it "Day show" $
+      show Wendnesday `shouldBe` "Wendnesday"
+    it "Day read" $
+      (read "Saturday" :: Day) `shouldBe` Saturday
+    it "Day Eq" $
+      Saturday == Sunday `shouldBe` False
+    it "Day Eq 2" $
+      Saturday == Saturday `shouldBe` True
+    it "Day Ord" $
+      Saturday > Friday `shouldBe` True
+    it "Day Ord 2" $
+      Monday `compare` Wendnesday `shouldBe` LT
+    it "Day Bounded" $
+      (minBound :: Day) `shouldBe` Monday
+    it "Day Bounded 2" $
+      (maxBound :: Day) `shouldBe` Sunday
+    it "Day Enum" $
+      succ Monday `shouldBe` Tuesday
+    it "Day Enum 2" $
+      pred Saturday `shouldBe` Friday
+    it "Day Enum 3" $
+      [Thursday .. Sunday] `shouldBe` [Thursday, Friday, Saturday, Sunday]
+    it "Day Enum 4" $
+      ([minBound .. maxBound] :: [Day]) `shouldBe`
+      [Monday, Tuesday, Wendnesday, Thursday, Friday, Saturday, Sunday]

@@ -11,3 +11,7 @@ mikeD = Person { firstName = "Michael"
                }
 
 mysteryDude = "Person {firstName = \"Michael\", lastName = \"Diamond\", age = 43}"
+
+data Day = Monday | Tuesday | Wendnesday | Thursday | Friday |
+           Saturday | Sunday
+            deriving (Eq, Ord, Show, Read, Bounded, Enum)
