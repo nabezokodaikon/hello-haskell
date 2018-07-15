@@ -78,3 +78,6 @@ spec = do
     it "Day Enum 4" $
       ([minBound .. maxBound] :: [Day]) `shouldBe`
       [Monday, Tuesday, Wendnesday, Thursday, Friday, Saturday, Sunday]
+  describe "Chapter7.6" $ do
+    it "inPhoneBook" $
+      inPhoneBook "patsy" "493-2928" phoneBook `shouldBe` True
