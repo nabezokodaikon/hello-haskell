@@ -29,3 +29,11 @@ spec = do
              , lastName = "b"
              , age = 2
              }
+    it "Person Show" $
+      show mikeD `shouldBe` "Person {firstName = \"Michael\", lastName = \"Diamond\", age = 43}"
+    it "Person Read" $
+      (read mysteryDude :: Person) `shouldBe` mikeD
+    it "Person Read 2" $
+      read mysteryDude `shouldBe` mikeD
+    it "Maybe Read" $
+      (read "Just 3" :: Maybe Int) `shouldBe` Just 3
