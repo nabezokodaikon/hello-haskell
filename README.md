@@ -98,6 +98,18 @@ data Bool = False | True
 * Show
 * Read
 
+### 型シノニム
+ある型に別の名前を与えて、コードやドキュメントを読みやすくするため。
+```
+-- Stringを[Char]の型シノニムにする。
+type String = [Char]
+```
+型シノニムにより、以下の宣言は同じ意味になる。
+この場合、Stringの方が読みやすいと思われる。
+```
+toUpperString :: [Char] -> [Char]
+toUpperString :: String -> String
+```
 
 ### ガード
 * 多言語でいうcase文。
