@@ -52,3 +52,21 @@ searchAssoc k m = Map.lookup k $ Map.fromList m
 {- TODO: 使い方がわからない。 -}
 {- type IntMap v = Map.Map Int v -}
 type IntMap = Map.Map Int
+
+data LockerState = Taken | Free deriving (Show, Eq)
+
+type Code = String
+
+type LockerMap = Map.Map Integer (LockerState, Code)
+
+lockerMap = Map.fromList [ (1, (Taken, "1234"))
+                         , (2, (Free, "5678"))
+                         ]
+
+lockerLookup :: Integer -> LockerMap -> Either String Code
+lockerLookup lockerNumber map =
+  case Map.lookup lockerNumber map of 
+    Nothing -> Left $ "Locker " ++ show lockerNumber ++ " doesn't exist!"
+    Just (state, code) -> if state /= Taken
+                          then Right code
+                          else Left $ "Locker " ++ show lockerNumber ++ " is already taken!"

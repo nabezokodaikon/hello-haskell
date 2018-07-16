@@ -83,3 +83,9 @@ spec = do
       inPhoneBook "patsy" "493-2928" phoneBook `shouldBe` True
     it "searchAssoc" $
       searchAssoc "a" assocMap `shouldBe` Just 1
+    it "lockerLookup" $
+      lockerLookup 0 lockerMap `shouldBe` Left "Locker 0 doesn't exist!"
+    it "lockerLookup2" $
+      lockerLookup 1 lockerMap `shouldBe` Left "Locker 1 is already taken!"
+    it "lockerLookup3" $
+      lockerLookup 2 lockerMap `shouldBe` Right "5678"
