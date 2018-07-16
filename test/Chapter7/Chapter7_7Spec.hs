@@ -18,6 +18,6 @@ spec = do
     it "List Example4" $
       [3, 4, 5] `shouldBe` 3:4:5:[]
     it "MyList" $
-      5 `Cons` Empty `shouldBe` Cons 5 Empty
+      5 `Cons` MyEmpty `shouldBe` Cons 5 MyEmpty
     it "MyList2" $
-      4 `Cons` (5 `Cons` Empty) `shouldBe` Cons 4 (Cons 5 Empty)
+      4 `Cons` (5 `Cons` MyEmpty) `shouldBe` Cons 4 (Cons 5 MyEmpty)
