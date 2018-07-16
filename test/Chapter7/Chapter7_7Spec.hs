@@ -21,3 +21,9 @@ spec = do
       5 `Cons` MyEmpty `shouldBe` Cons 5 MyEmpty
     it "MyList2" $
       4 `Cons` (5 `Cons` MyEmpty) `shouldBe` Cons 4 (Cons 5 MyEmpty)
+  describe "リストの改善" $ do
+    it "List" $
+      3 :-: 4 :-: 5 :-: Empty `shouldBe` 3 :-: (4 :-: (5 :-: Empty))
+    it "^++" $
+      (3 :-: 4 :-: Empty) ^++ (5 :-: 6 :-: Empty) `shouldBe` 3 :-: (4 :-: (5 :-: (6 :-: Empty)))
+
