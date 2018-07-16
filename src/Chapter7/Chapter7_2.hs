@@ -1,5 +1,7 @@
 module Chapter7.Chapter7_2 where
 
+import qualified Data.Map as Map
+
 data Person = Person { firstName :: String
                      , lastName :: String
                      , age :: Int
@@ -31,3 +33,22 @@ phoneBook =
 
 inPhoneBook :: Name -> PhoneNumber -> PhoneBook -> Bool
 inPhoneBook name pnumber pbook = (name, pnumber) `elem` pbook
+
+type AssocList k v = [(k, v)] 
+
+{- assocMap = [ ("a", 1) -}
+           {- , ("b", 2) -}
+           {- , ("c", 3) -}
+           {- ] :: AssocList String Int -}
+assocMap = [ ("a", 1)
+           , ("b", 2)
+           , ("c", 3)
+           ]
+
+{- searchAssoc :: (Ord k) => k -> [(k, v)] -> Maybe v -}
+searchAssoc :: (Ord k) => k -> AssocList k v -> Maybe v
+searchAssoc k m = Map.lookup k $ Map.fromList m
+
+{- TODO: 使い方がわからない。 -}
+{- type IntMap v = Map.Map Int v -}
+type IntMap = Map.Map Int

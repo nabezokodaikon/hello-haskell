@@ -81,3 +81,5 @@ spec = do
   describe "Chapter7.6" $ do
     it "inPhoneBook" $
       inPhoneBook "patsy" "493-2928" phoneBook `shouldBe` True
+    it "searchAssoc" $
+      searchAssoc "a" assocMap `shouldBe` Just 1
