@@ -46,3 +46,8 @@ spec = do
       yesnoIf (Just 500) "Yes" "No" `shouldBe` "Yes"
     it "yesnoIf 5" $
       yesnoIf Nothing "Yes" "No" `shouldBe` "No"
+  describe "Functor型クラス" $ do
+    it "fmap" $
+      fmap (* 2) [1, 2] `shouldBe` map (* 2) [1, 2]
+    it "fmap 2" $
+      fmap (* 2) [] `shouldBe` map (* 2) []

@@ -1,5 +1,7 @@
 module Chapter7.Chapter7_8 where
 
+import Data.Functor
+
 {-
 Eq型クラス
 class Eq a where
@@ -56,3 +58,13 @@ yesnoIf yesnoVal yesResult noResult =
   if yesno yesnoVal
      then yesResult
      else noResult
+
+{-
+ファンクタの実装。
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b
+
+mapとは`[]`限定のファンクタ。
+instance Functor [] where
+  fmap = map
+-}
