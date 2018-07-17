@@ -19,3 +19,30 @@ spec = do
       show Red `shouldBe` "Red light"
     {- it "show 2" $ -}
       {- [Red, Yellow, Green] `shouldBe` ["Red light", "Yellow light", "Green light"] -}
+  describe "YesとNoの型クラス" $ do
+    it "yesno" $
+      (yesno $ length []) `shouldBe` False
+    it "yesno 2" $
+      yesno "haha" `shouldBe` True
+    it "yesno 3" $
+      yesno "" `shouldBe` False
+    it "yesno 4" $
+      yesno (Just 0) `shouldBe` True
+    it "yesno 5" $
+      yesno True `shouldBe` True
+    it "yesno 6" $
+      yesno EmptyTree `shouldBe` False
+    it "yesno 7" $
+      yesno [] `shouldBe` False
+    it "yesno 8" $
+      yesno [0, 0, 0] `shouldBe` True
+    it "yesnoIf" $
+      yesnoIf [] "Yes" "No" `shouldBe` "No"
+    it "yesnoIf 2" $
+      yesnoIf [2, 3, 4] "Yes" "No" `shouldBe` "Yes"
+    it "yesnoIf 3" $
+      yesnoIf True "Yes" "No" `shouldBe` "Yes"
+    it "yesnoIf 4" $
+      yesnoIf (Just 500) "Yes" "No" `shouldBe` "Yes"
+    it "yesnoIf 5" $
+      yesnoIf Nothing "Yes" "No" `shouldBe` "No"
