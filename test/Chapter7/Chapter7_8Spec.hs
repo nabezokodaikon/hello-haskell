@@ -60,3 +60,9 @@ spec = do
       fmap (* 2) (Just 200) `shouldBe` Just 400
     it "Maybe 4" $
       fmap (* 2) Nothing `shouldBe` Nothing
+    describe "TreeもFunctorの森に" $ do
+      it "Tree" $
+        fmap (* 2) EmptyTree `shouldBe` EmptyTree
+      it "Tree 2" $
+        fmap (* 4) (foldr treeInsert EmptyTree [5, 7, 3]) `shouldBe`
+        Node 12 EmptyTree (Node 28 (Node 20 EmptyTree EmptyTree) EmptyTree)
