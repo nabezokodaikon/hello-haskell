@@ -51,3 +51,12 @@ spec = do
       fmap (* 2) [1, 2] `shouldBe` map (* 2) [1, 2]
     it "fmap 2" $
       fmap (* 2) [] `shouldBe` map (* 2) []
+  describe "MaybeはFunctorだよ、たぶん" $ do
+    it "Maybe" $
+      fmap (++ "A") (Just "B") `shouldBe` Just "BA"
+    it "Maybe 2" $
+      fmap (++ "A") Nothing `shouldBe` Nothing
+    it "Maybe 3" $
+      fmap (* 2) (Just 200) `shouldBe` Just 400
+    it "Maybe 4" $
+      fmap (* 2) Nothing `shouldBe` Nothing

@@ -67,4 +67,9 @@ class Functor f where
 mapとは`[]`限定のファンクタ。
 instance Functor [] where
   fmap = map
+
+Maybeもファンクタ。
+instance Functor Maybe where
+  fmap f (Just x) = Just (f x)
+  fmap f Nothing = Nothing
 -}
