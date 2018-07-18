@@ -89,6 +89,11 @@ Maybeもファンクタ。
 instance Functor Maybe where
   fmap f (Just x) = Just (f x)
   fmap f Nothing = Nothing
+
+Eitherの場合、引数を1つだけ部分適用する。
+instance Functor (Either a) where
+  fmap f (Right x) = Right (f x)
+  fmap f (Left x) = Left (f x)
 -}
 
 instance Functor Tree where
