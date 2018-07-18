@@ -17,6 +17,7 @@ main = do
 -}
 
 -- I/Oアクションの中でletを使う
+{-
 main :: IO ()
 main = do
   putStrLn "What's your first name?"
@@ -28,3 +29,18 @@ main = do
   putStrLn $ "hey " ++ bigFirstName ++ " "
                     ++ bigLastName
                     ++ ", how are you?"
+-}
+
+-- 逆順に表示する
+main :: IO ()
+main = do
+  line <- getLine
+  if null line
+     then return ()
+     else do
+       putStrLn $ reverseWords line
+       main
+
+reverseWords :: String -> String
+reverseWords = unwords . map reverse . words
+{- reverseWords line = unwords (map reverse (words line)) -}
