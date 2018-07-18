@@ -123,6 +123,24 @@ toUpperString :: [Char] -> [Char]
 toUpperString :: String -> String
 ```
 
+### 種類
+* 値について何らかの推論をするためについているラベル。
+* 型にもラベルが付いている。
+* 型は値のラベルであり、種類は型のラベル。
+* replでの確認方法。
+```
+:k Int
+Int :: *
+
+-- 一つの具体型を取って具体型(Maybe Int)を返す型コンストラクタ。
+:k Maybe 
+Maybe :: * -> *
+
+:k Maybe Int
+Maybe Int :: *
+```
+
+
 ### ガード
 * 多言語でいうcase文。
 * Trueのときのみ評価され、Falseの場合は下へ落ちていく。
