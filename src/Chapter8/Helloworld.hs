@@ -1,5 +1,6 @@
 module Chapter8.Helloworld where
 
+import Control.Monad
 import Data.Char
 
 -- 8.2
@@ -32,6 +33,7 @@ main = do
 -}
 
 -- 逆順に表示する
+{-
 main :: IO ()
 main = do
   line <- getLine
@@ -44,3 +46,19 @@ main = do
 reverseWords :: String -> String
 reverseWords = unwords . map reverse . words
 {- reverseWords line = unwords (map reverse (words line)) -}
+-}
+
+
+-- when
+{-
+main :: IO ()
+main = do
+  input <- getLine
+  when (input == "aa") $ do
+    putStrLn input
+-}
+
+main :: IO ()
+main = do
+  rs <- sequence [getLine, getLine, getLine]
+  print rs
