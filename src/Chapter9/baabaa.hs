@@ -14,9 +14,15 @@ main = do
   hClose handle
 -}
 
+{-
 main :: IO ()
 main = withFile "src/Chapter9/baabaa.txt" ReadMode $ \handle -> do
   contents <- hGetContents handle
+  putStr contents
+-}
+
+main = do
+  contents <- readFile "src/Chapter9/baabaa.txt"
   putStr contents
 
 withFile' :: FilePath -> IOMode -> (Handle -> IO a) -> IO a
