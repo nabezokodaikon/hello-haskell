@@ -1,4 +1,6 @@
--- stack runghc src/Chapter9/palindrome.hs < src/Chapter9/words.txt
+-- stack runghc src/Chapter9/Palindrome.hs < src/Chapter9/words.txt
+
+module Chapter9.Palindrome where
 
 respondPalindromes :: String -> String
 respondPalindromes = 

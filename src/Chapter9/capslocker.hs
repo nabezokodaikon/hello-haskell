@@ -1,7 +1,9 @@
+-- stack runghc src/Chapter9/Capslocker.hs < src/Chapter9/haiku.txt
+
+module Chapter9.Capslocker where
+
 import Control.Monad
 import Data.Char
-
--- stack runghc src/Chapter9/capslocker.hs < src/Chapter9/haiku.txt
 
 main :: IO ()
 main = forever $ do

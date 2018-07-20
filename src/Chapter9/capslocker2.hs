@@ -1,6 +1,8 @@
+module Chapter9.Capslocker2 where
+
 import Data.Char
 
--- stack runghc src/Chapter9/capslocker2.hs < src/Chapter9/haiku.txt
+-- stack runghc src/Chapter9/Capslocker2.hs < src/Chapter9/haiku.txt
 
 main :: IO ()
 main = do

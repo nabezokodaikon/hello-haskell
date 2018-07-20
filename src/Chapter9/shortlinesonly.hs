@@ -1,4 +1,6 @@
--- stack runghc src/Chapter9/shortlinesonly.hs < src/Chapter9/shortlines.txt
+-- stack runghc src/Chapter9/Shortlinesonly.hs < src/Chapter9/shortlines.txt
+
+module Chapter9.Shortlinesonly where
 
 main :: IO ()
 {- main = do -}
