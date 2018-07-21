@@ -5,6 +5,7 @@ module Chapter9.DeleteToDo where
 import System.IO
 import System.Directory
 import Data.List
+import Control.Exception
 
 main :: IO ()
 main = do
@@ -22,8 +23,13 @@ main = do
   let number = read numberString
       newTodoItems = unlines $ delete (todoTasks !! number) todoTasks -- ["aaa", "bbb"] -> "aaa\nbbb\n"
 
-  (tempName, tempHandle) <- openTempFile "." "temp"
-  hPutStr tempHandle newTodoItems
-  hClose tempHandle
-  removeFile todoFile
-  renameFile tempName todoFile
+  bracketOnError (openTempFile "." "temp")
+    (\(tempName, tempHandle) -> do
+        hClose tempHandle
+        removeFile tempName)
+    
+    (\(tempName, tempHandle) -> do
+        hPutStr tempHandle newTodoItems
+        hClose tempHandle
+        removeFile todoFile
+        renameFile tempName todoFile)
