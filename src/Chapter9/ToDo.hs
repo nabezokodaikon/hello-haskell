@@ -60,5 +60,9 @@ dispatch command = doesntExist command
 
 main :: IO ()
 main = do
-  (command : argList) <- getArgs -- 最初の引数をcommandに、残りの引数をargListに束縛する。
-  dispatch command argList
+    args <- getArgs
+    if length args == 0
+    then putStrLn "args is empty"
+    else do
+        (command : argList) <- getArgs -- 最初の引数をcommandに、残りの引数をargListに束縛する。
+        dispatch command argList
