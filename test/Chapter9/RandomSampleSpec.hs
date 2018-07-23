@@ -2,6 +2,7 @@ module Chapter9.RandomSampleSpec (spec) where
 
 import Test.Hspec
 import System.Random
+import Chapter9.CoinToss
 
 main :: IO ()
 main = hspec spec
@@ -25,3 +26,9 @@ spec = do
             let (_, r1) = random (mkStdGen 100) :: (Int, StdGen)
                 (_, r2) = random r1 :: (Int, StdGen)
             show r1 `shouldNotBe` show r2
+    describe "threeCoins" $ do 
+        it "Random" $
+            threeCoins (mkStdGen 1) `shouldBe` threeCoins (mkStdGen 1)
+        it "Random2" $
+            threeCoins (mkStdGen 1) `shouldNotBe` threeCoins (mkStdGen 2)
+
