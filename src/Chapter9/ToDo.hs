@@ -46,10 +46,16 @@ remove [fileName, numberString] = do
             renameFile tempName fileName)
 
 
+doesntExist :: String -> [String] -> IO ()
+doesntExist command _ =
+    putStrLn $ "The " ++ command ++ " command doesn't exist"
+
+
 dispatch :: String -> [String] -> IO ()
 dispatch "add" = add
 dispatch "view" = view
 dispatch "remove" = remove
+dispatch command = doesntExist command
 
 
 main :: IO ()
