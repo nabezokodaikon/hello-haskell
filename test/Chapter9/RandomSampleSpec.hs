@@ -23,5 +23,5 @@ spec = do
             v1 `shouldNotBe` v2
         it "Random4" $ do
             let (_, r1) = random (mkStdGen 100) :: (Int, StdGen)
-                (_, r2) = random (mkStdGen 101) :: (Int, StdGen)
+                (_, r2) = random r1 :: (Int, StdGen)
             show r1 `shouldNotBe` show r2
