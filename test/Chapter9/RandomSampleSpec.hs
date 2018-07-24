@@ -31,4 +31,17 @@ spec = do
             threeCoins (mkStdGen 1) `shouldBe` threeCoins (mkStdGen 1)
         it "Random2" $
             threeCoins (mkStdGen 1) `shouldNotBe` threeCoins (mkStdGen 2)
-
+    describe "Randoms" $ do
+        it "randoms'" $
+            take 5 (randoms' (mkStdGen 11) :: [Int]) `shouldBe`
+            take 5 (randoms (mkStdGen 11) :: [Int])
+        it "finiteRandom" $
+            fst (finiteRandom 5 (mkStdGen 11) :: ([Int], StdGen)) `shouldBe`
+            fst (finiteRandom 5 (mkStdGen 11) :: ([Int], StdGen)) 
+    describe "RandomR" $ do
+        it "randomR" $
+            let n = fst (randomR (1, 6)(mkStdGen 11) :: (Int, StdGen))
+             in 1 <= n && n <= 6 `shouldBe` True
+        it "randomRs" $
+            let c = take 1 (randomRs ('a', 'z') (mkStdGen 11) :: [Char])
+             in "a" <= c && c <= "z" `shouldBe` True
