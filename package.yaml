@@ -24,6 +24,7 @@ dependencies:
 - containers # Using Data.Map
 - directory
 - random
+- bytestring
 
 library:
   source-dirs: src
