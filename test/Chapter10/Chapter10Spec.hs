@@ -2,6 +2,7 @@ module Chapter10.Chapter10Spec (spec) where
 
 import Test.Hspec
 import Chapter10.SolveRPN
+import Chapter10.Heathrow
 
 main :: IO ()
 main = hspec spec
@@ -21,3 +22,7 @@ spec = do
             solveRPN "1 2 3 ln" `shouldBe` 1.0986122886681098
         it "sum" $
             solveRPN "1 2 3 sum" `shouldBe` 6
+    describe "optimalPath" $ do
+        it "Hard coding" $
+            optimalPath heathrowToLondon `shouldBe`
+            [(B,10),(C,30),(A,5),(C,20),(B,2),(B,8),(C,0)]
