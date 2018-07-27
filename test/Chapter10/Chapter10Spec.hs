@@ -26,3 +26,5 @@ spec = do
         it "Hard coding" $
             optimalPath heathrowToLondon `shouldBe`
             [(B,10),(C,30),(A,5),(C,20),(B,2),(B,8),(C,0)]
+        it "groupsOf" $
+            groupsOf 3 [1..10] `shouldBe` [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
