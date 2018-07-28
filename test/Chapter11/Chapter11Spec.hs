@@ -45,3 +45,17 @@ spec = do
             CJust 100 [1..3] `shouldBe` CJust 100 [1, 2, 3]
         it "CMaybe Functor" $
             fmap id (CJust 0 "a") `shouldNotBe` id (CJust 0 "a")
+    describe "Applicative Functor" $ do
+        it "001" $ do
+            let a = fmap (*) [1..4]
+            fmap (\f -> f 9) a `shouldBe` [9, 18, 27, 36]
+            fmap (\f -> f 9) a `shouldBe` fmap ($9) a
+    describe "Applicative Maybe" $ do
+        it "001" $
+            Just (+3) <*> Just 9 `shouldBe` Just 12
+        it "002" $
+            pure (+3) <*> Just 10 `shouldBe` Just 13
+        it "003" $
+            Just (++"abc") <*> Nothing `shouldBe` Nothing
+        {- it "004" $ -}
+            {- Nothing <*> Just "abc" `shouldBe` Nothing -}
