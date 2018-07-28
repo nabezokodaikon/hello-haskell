@@ -1,6 +1,7 @@
 module Chapter11.Chapter11Spec (spec) where
 
 import Test.Hspec
+import Chapter11.Chapter11
 
 main :: IO ()
 main = hspec spec
@@ -33,3 +34,14 @@ spec = do
             fmap (replicate 3) Nothing `shouldBe` (Nothing :: Maybe [Bool]) 
         it "fmap 7" $
             fmap (replicate 3) (Left "foo") `shouldBe` (Left "foo" :: Either [Char] [[Char]])
+    describe "Functor 11.2" $ do
+        it "id" $
+            fmap id (Just 3) `shouldBe` Just 3
+        it "id 2" $
+            fmap id [1..5] `shouldBe` id [1..5]
+        it "CMaybe" $
+            CJust 0 "a" `shouldBe` CJust 0 "a"
+        it "CMaybe 2" $
+            CJust 100 [1..3] `shouldBe` CJust 100 [1, 2, 3]
+        it "CMaybe Functor" $
+            fmap id (CJust 0 "a") `shouldNotBe` id (CJust 0 "a")
