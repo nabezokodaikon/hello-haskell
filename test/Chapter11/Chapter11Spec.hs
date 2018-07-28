@@ -59,3 +59,8 @@ spec = do
             Just (++"abc") <*> Nothing `shouldBe` Nothing
         {- it "004" $ -}
             {- Nothing <*> Just "abc" `shouldBe` Nothing -}
+    describe "Applicative style" $ do
+        it "001" $
+            pure (+) <*> Just 3 <*> Just 5 `shouldBe` Just 8
+        it "002" $
+            (++) <$> Just "abc" <*> Just "def" `shouldBe` Just "abcdef"
