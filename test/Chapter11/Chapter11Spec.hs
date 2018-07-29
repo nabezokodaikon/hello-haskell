@@ -88,3 +88,20 @@ spec = do
         it "001" $
             getZipList ((+) <$> ZipList [1, 2, 3] <*> ZipList [100, 100, 100]) `shouldBe`
             [101, 102, 103]
+    describe "アプリカティブの便利な関数" $ do
+        it "liftA2" $
+            liftA2 (:) (Just 3) (Just [4]) `shouldBe` Just [3, 4]
+        it "liftA2 2" $
+            liftA2 (*) (Just 3) (Just 4) `shouldBe` Just 12
+        it "sequenceA'" $
+            sequenceA' [Just 1, Just 2] `shouldBe` Just [1, 2]
+        it "sequenceA''" $
+            sequenceA'' [(+3), (+2), (+1)] 3 `shouldBe` [6, 5, 4]
+        it "001" $
+            map (\f -> f 7) [(>4), (<10), odd] `shouldBe` [True, True, True]
+        it "001 b" $
+            sequenceA [(>4), (<10), odd] 7 `shouldBe` [True, True, True]
+        it "002" $
+            and (map (\f -> f 7) [(>4), (<10), odd]) `shouldBe` True
+        it "002 b" $
+            and (sequenceA [(>4), (<10), odd] 7) `shouldBe` True
