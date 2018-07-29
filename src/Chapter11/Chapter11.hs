@@ -27,6 +27,6 @@ myAction = do
 myAction' :: IO String
 myAction' = (++) <$> getLine <*> getLine
 
-main = do
-    a <- (++) <$> getLine <*> getLine
-    putStrLn a
+-- main = do
+    -- a <- (++) <$> getLine <*> getLine
+    -- putStrLn a

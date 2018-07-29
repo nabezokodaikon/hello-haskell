@@ -1,6 +1,7 @@
 module Chapter11.Chapter11Spec (spec) where
 
 import Test.Hspec
+import Control.Applicative
 import Chapter11.Chapter11
 
 main :: IO ()
@@ -80,6 +81,10 @@ spec = do
             (*) <$> [2, 5, 10] <*> [8, 10, 11]
         it "006" $
             (filter (> 50) $ (*) <$> [2, 5, 10] <*> [8, 10, 11]) `shouldBe` [55, 80, 100, 110]
-    describe "Applicative Function" $
+    -- describe "Applicative Function" $
         -- it "001" $
             -- (+) <$> (+3) <*> (*100) (5) `shouldBe` 508
+    describe "ZipList" $ do
+        it "001" $
+            getZipList ((+) <$> ZipList [1, 2, 3] <*> ZipList [100, 100, 100]) `shouldBe`
+            [101, 102, 103]
