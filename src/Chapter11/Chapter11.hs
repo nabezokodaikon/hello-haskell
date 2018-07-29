@@ -1,3 +1,5 @@
+-- stack runghc src/Chapter11/Chapter11.hs
+
 module Chapter11.Chapter11 where
 
 import Control.Applicative
@@ -15,3 +17,16 @@ instance Applicative Maybe where
     Nothing <*> _ = Nothing
     (Just f) <*> something = fmap f something
 --}
+
+myAction :: IO String
+myAction = do
+    a <- getLine
+    b <- getLine
+    return $ a ++ b
+
+myAction' :: IO String
+myAction' = (++) <$> getLine <*> getLine
+
+main = do
+    a <- (++) <$> getLine <*> getLine
+    putStrLn a
