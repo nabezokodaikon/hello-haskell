@@ -64,3 +64,19 @@ spec = do
             pure (+) <*> Just 3 <*> Just 5 `shouldBe` Just 8
         it "002" $
             (++) <$> Just "abc" <*> Just "def" `shouldBe` Just "abcdef"
+    describe "List" $ do
+        it "001" $
+            (pure "abc" :: [String]) `shouldBe` ["abc"]
+        it "002" $
+            (pure "abc" :: Maybe String) `shouldBe` Just "abc"
+        it "003" $
+            [(*0), (+100), (^2)] <*> [1, 2, 3] `shouldBe`
+            [0, 0, 0, 101, 102, 103, 1, 4, 9]
+        it "004" $
+            [(+), (*)] <*> [1, 2] <*> [3, 4] `shouldBe`
+            [4, 5, 5, 6, 3, 4, 6, 8]
+        it "005" $
+            [ x * y | x <- [2, 5, 10], y <- [8, 10, 11]] `shouldBe`
+            (*) <$> [2, 5, 10] <*> [8, 10, 11]
+        it "006" $
+            (filter (> 50) $ (*) <$> [2, 5, 10] <*> [8, 10, 11]) `shouldBe` [55, 80, 100, 110]
