@@ -27,6 +27,54 @@ type IntList = [Int]
 ### `data`
 * 自作の新しいデータ型を作るためのもの。
 
+
+## 関数合成
+* 関数合成は右結合なので、一度にたくさんの関数を合成できる。
+* `f (g (z x))`は、`(f . g . z) x`と等価。
+```
+map (\x -> negate (abs x)) [1, 2, 3] == map (negate . abs) [1, 2, 3]
+```
+
+### 多引数関数の関数合成
+```
+sum (replicate 5 (max (6, 8))) ==
+(sum . replicate 5) (max 6 8) ==
+sum . replicate 5 $ max 6 8
+```
+
+### たくさん括弧がある式を関数合成で書き直す場合
+`replicate 2 (product (map (*3) (zipWith max [1, 2] [4, 5])))`
+1. 閉じ括弧の集まりの直前を見て、右端にある関数とその引数を見つける。これを取り出して書き付けておく。
+	* `zipWith max [1, 2] [3, 4]`
+1. `zipWith max [1, 2] [3, 4]`にどのカンスが適用されているかを調べる。
+  * `map (*3)`
+1. 取り出した式の間に`$`を置く。
+  * `map (*3) $ zipWith max [1, 2] [3, 4]`
+1. `map(*3)`に`product`が適用されているので、合成する。
+  * `product . map (*3) $ zipWith max [1, 2] [3, 4]`
+1. `product`に`replicate 2`が適用されているので、合成する。
+  * `replicate 2 product . map (*3) $ zipWith max [1, 2] [3, 4]`
+
+### ポイントフリースタイル
+#### 例1
+```
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (+) 0 xs
+```
+イコールの右端の`xs`は関数がカリー化されているため、両側の`xs`は省略できる。
+```
+sum' :: (Num a) => [a] -> a
+sum' foldl (+) 0
+```
+#### 例2
+`fn x = ceiling (negate (tan (cos (max 50 x))))`
+1. 関数合成する。
+  * `fn x = ceiling . negate . tan . cos . max 50 x`
+1. 両端の`x`を取り除く。
+  * `fn = ceiling . negate . tan . cos . max 50`
+
+
+
 ## モノイド則
 ```
 class Monoid m where
