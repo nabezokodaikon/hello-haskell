@@ -26,3 +26,26 @@ type IntList = [Int]
 
 ### `data`
 * 自作の新しいデータ型を作るためのもの。
+
+## モノイド則
+```
+class Monoid m where
+    mempty :: m
+    mappend :: m -> m -> m
+    mconcat :: [m] -> m
+    mconcat = foldr mappend mempty
+```
+モノイドが満たすべき法則。
+* 固有の**二項演算**があること。
+* その二項演算に関する**単位元**があること。
+* `mempty`が`mappend`に関して単位元として振る舞う必要がある。
+```
+mempty `mappend` x = x
+x `mappend` mempty = x
+```
+* `mappend`が結合的であること。
+* 複数の`mappend`で連携つされた式から1つの値を計算するとき、
+`mapend`を評価する順序は最終結果に影響しないこと。
+```
+(x `mappend` y) `mappend` z = x `mappend` (y `mappend` z)
+```
