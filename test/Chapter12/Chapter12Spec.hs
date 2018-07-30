@@ -25,3 +25,13 @@ spec = do
             mconcat [[1, 2], [3, 6], [9]] `shouldBe` [1, 2, 3, 6, 9]
         -- it "リストはモノイド 3" $
             -- mempty :: [a] `shouldBe` []
+        it "Product" $
+            getProduct (Product 3 `mappend` Product 9) `shouldBe` 27
+        it "Product 2" $
+            getProduct (Product 3 `mappend` mempty) `shouldBe` 3
+        it "Product 3" $ do
+            (getProduct . mconcat . map Product $ [3, 4, 2]) `shouldBe` 24
+        it "Sum" $
+            (getSum $ Sum 2 `mappend` Sum 9) `shouldBe` 11
+        it "Sum 2" $
+            (getSum . mconcat . map Sum $ [1, 2, 3]) `shouldBe` 6
