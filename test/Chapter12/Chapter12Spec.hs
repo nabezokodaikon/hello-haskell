@@ -35,3 +35,27 @@ spec = do
             (getSum $ Sum 2 `mappend` Sum 9) `shouldBe` 11
         it "Sum 2" $
             (getSum . mconcat . map Sum $ [1, 2, 3]) `shouldBe` 6
+        it "getAny" $
+            getAny (Any True `mappend` Any False) `shouldBe` True
+        it "getAny 2" $
+            (getAny . mconcat . map Any $ [False, False, False, True]) `shouldBe` True
+        it "getAll" $
+            (getAll $ mempty `mappend` All True) `shouldBe` True
+        it "getAll 2" $
+            (getAll . mconcat .map All $ [True, True, True]) `shouldBe` True 
+        it "getAll 3" $
+            (getAll . mconcat .map All $ [True, True, False]) `shouldBe` False
+        it "lengthCompare" $
+            lengthCompare "zen" "ants" `shouldBe` LT
+        it "lengthCompare 2" $
+            lengthCompare "zen" "ant" `shouldBe` GT
+        it "lengthCompare'" $
+            lengthCompare' "zen" "ants" `shouldBe` LT
+        it "lengthCompare' 2" $
+            lengthCompare' "zen" "ant" `shouldBe` GT
+        it "lengthCompare''" $
+            lengthCompare'' "zen" "anna" `shouldBe` LT
+        it "lengthCompare''" $
+            lengthCompare'' "zen" "ana" `shouldBe` LT
+        it "lengthCompare''" $
+            lengthCompare'' "zen" "ann" `shouldBe` GT
