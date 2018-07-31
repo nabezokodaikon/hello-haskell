@@ -59,3 +59,18 @@ spec = do
             lengthCompare'' "zen" "ana" `shouldBe` LT
         it "lengthCompare''" $
             lengthCompare'' "zen" "ann" `shouldBe` GT
+        it "Maybe" $
+            Nothing `mappend` Just "abc" `shouldBe` Just "abc"
+        it "Maybe 2" $
+            Just LT `mappend` Nothing `shouldBe` Just LT
+        it "Maybe 3" $
+            Just (Sum 3) `mappend` Just (Sum 4) `shouldBe`
+            Just (Sum { getSum = 7 })
+        it "Maybe 4" $
+            (getFirst $ First (Just 'a') `mappend` First (Just 'b')) `shouldBe` Just 'a'
+        it "Maybe 5" $
+            (getFirst $ First Nothing `mappend` First (Just 'b')) `shouldBe` Just 'b'
+        it "Maybe First" $
+            (getFirst . mconcat . map First $ [Nothing, Just 9, Just 10]) `shouldBe` Just 9
+        it "Maybe Last" $
+            (getLast . mconcat . map Last $ [Nothing, Just 9, Just 10]) `shouldBe` Just 10
