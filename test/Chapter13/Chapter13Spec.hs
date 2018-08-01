@@ -3,6 +3,7 @@ module Chapter13.Chapter13Spec (spec) where
 import Test.Hspec
 import Chapter13.Chapter13
 
+
 main :: IO ()
 main = hspec spec
 
@@ -27,3 +28,10 @@ spec = do
             Just 3 `applyMaybe` (\x -> if x > 2 then Just x else Nothing) `shouldBe` Just 3
         it "applyMaybe 5" $
             Just 1 `applyMaybe` (\x -> if x > 2 then Just x else Nothing) `shouldBe` Nothing
+    describe "13.3 Monad型クラス" $ do
+        it "Monad Maybe" $
+            (return "WHAT" :: Maybe String) `shouldBe` Just "WHAT"
+        it "Monad Maybe 2" $
+            (Just 9 >>= \x -> return (x * 10)) `shouldBe` Just 90
+        it "Monad Maybe 3" $
+            (Nothing >>= \x -> return (x * 10)) `shouldBe` Nothing
