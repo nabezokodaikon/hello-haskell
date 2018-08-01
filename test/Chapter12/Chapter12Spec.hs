@@ -3,6 +3,7 @@ module Chapter12.Chapter12Spec (spec) where
 import Test.Hspec
 import Chapter12.Chapter12
 import Data.Monoid
+import qualified Data.Foldable as F
 
 main :: IO ()
 main = hspec spec
@@ -74,3 +75,18 @@ spec = do
             (getFirst . mconcat . map First $ [Nothing, Just 9, Just 10]) `shouldBe` Just 9
         it "Maybe Last" $
             (getLast . mconcat . map Last $ [Nothing, Just 9, Just 10]) `shouldBe` Just 10
+    describe "12.4 モノイドで畳み込む" $ do
+        it "foldl" $
+            F.foldl (+) 2 (Just 9) `shouldBe` 11
+        it "foldr" $
+            F.foldr (||) False (Just True)
+        it "Tree foldl" $
+            F.foldl (+) 0 testTree `shouldBe` 42
+        it "Tree foldl 2" $
+            F.foldl (*) 1 testTree `shouldBe` 64800
+        it "foldMap" $
+            (getAny $ F.foldMap (\x -> Any $ x == 3) testTree) `shouldBe` True
+        it "foldMap 2" $
+            (getAny $ F.foldMap (\x -> Any $ x > 15) testTree) `shouldBe` False
+        it "foldMap 3" $
+            F.foldMap (\x -> [x]) testTree `shouldBe` [1, 3, 6, 5, 8, 9, 10]
