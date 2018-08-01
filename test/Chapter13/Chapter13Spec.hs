@@ -8,5 +8,22 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-    describe "" $ do
-        it "" $
+    describe "13.2 Maybeから始めるモナド" $ do
+        it "fmap Maybe" $
+            fmap (++"!") (Just "wisdom") `shouldBe` Just "wisdom!"
+        it "fmap Maybe 2" $
+            fmap (++"!") Nothing `shouldBe` Nothing
+        it "<*> Maybe" $
+            Just (+3) <*> Just 3 `shouldBe` Just 6
+        it "<$> Maybe" $
+            max <$> Just 3 <*> Just 6 `shouldBe` Just 6
+        it "applyMaybe" $
+            Just 3 `applyMaybe` (\x -> Just (x + 1)) `shouldBe` Just 4
+        it "applyMaybe 2" $
+            Just "smile" `applyMaybe` (\x -> Just (x ++ " :)")) `shouldBe` Just "smile :)"
+        it "applyMaybe 3" $
+            Nothing `applyMaybe` (\x -> Just (x + 1)) `shouldBe` Nothing
+        it "applyMaybe 4" $
+            Just 3 `applyMaybe` (\x -> if x > 2 then Just x else Nothing) `shouldBe` Just 3
+        it "applyMaybe 5" $
+            Just 1 `applyMaybe` (\x -> if x > 2 then Just x else Nothing) `shouldBe` Nothing
