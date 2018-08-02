@@ -63,3 +63,12 @@ spec = do
         it "banana" $
             (return (0, 0) >>= landLeft 1 >>= banana >>= landRight 1) `shouldBe`
             Nothing
+    describe "13.5 do記法" $ do
+        it "do" $
+            foo `shouldBe` foo'
+        it "do 2" $
+            marySue `shouldBe` marySue'
+        it "justH" $
+            justH `shouldBe` Just 'h'
+        it "wopwop" $
+            wopwop `shouldBe` Nothing
