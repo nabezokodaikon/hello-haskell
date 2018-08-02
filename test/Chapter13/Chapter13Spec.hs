@@ -35,3 +35,31 @@ spec = do
             (Just 9 >>= \x -> return (x * 10)) `shouldBe` Just 90
         it "Monad Maybe 3" $
             (Nothing >>= \x -> return (x * 10)) `shouldBe` Nothing
+    describe "13.4 綱渡り" $ do
+        -- it "Pole 1" $
+            -- landLeft 2 (landRight 1 (landLeft 1 (0, 0))) `shouldBe` (3, 1)
+        -- it "-: 1" $
+            -- 100 -: (* 3) `shouldBe` 300
+        -- it "-: 2" $
+            -- True -: not `shouldBe` False
+        -- it "Pole 2" $
+            -- (0, 0) -: landLeft 2 `shouldBe` (2, 0)
+        -- it "Pole 3" $
+            -- (0, 0) -: landLeft 1 -: landRight 1 -: landLeft 2 `shouldBe` (3, 1)
+        it "Pole Maybe" $
+            landLeft 2 (0, 0) `shouldBe` Just (2, 0)
+        it "Pole Maybe" $
+            landLeft 10 (0, 3) `shouldBe` Nothing
+        it "Pole >>=" $
+            (landRight 1 (0, 0) >>= landLeft 2) `shouldBe` Just (2, 1) 
+        it "Pole >>= 2" $
+            (Nothing >>= landLeft 2) `shouldBe` Nothing
+        it "Pole >>= 3" $
+            (return (0, 0) >>= landRight 2 >>= landLeft 2 >>= landRight 2) `shouldBe`
+            Just (2, 4)
+        it "Pole >>= 4" $
+            (return (0, 0) >>= landLeft 1 >>= landRight 4 >>= landLeft (-1) >>= landRight (-2)) `shouldBe`
+            Nothing
+        it "banana" $
+            (return (0, 0) >>= landLeft 1 >>= banana >>= landRight 1) `shouldBe`
+            Nothing
