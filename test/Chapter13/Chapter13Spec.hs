@@ -1,8 +1,8 @@
 module Chapter13.Chapter13Spec (spec) where
 
 import Test.Hspec
+import Control.Monad
 import Chapter13.Chapter13
-
 
 main :: IO ()
 main = hspec spec
@@ -72,3 +72,38 @@ spec = do
             justH `shouldBe` Just 'h'
         it "wopwop" $
             wopwop `shouldBe` Nothing
+    describe "13.6 リストモナド" $ do
+        it ">>=" $
+            ([3, 4, 5] >>= \x -> [x, -x]) `shouldBe` [3, -3, 4, -4, 5, -5]
+        it ">>= 2" $
+            ([] >>= \x -> ["bad", "mad", "rad"]) `shouldBe` []
+        it "listOfTuples" $
+            ([1, 2] >>= \n -> ['a', 'b'] >>= \ch -> return (n, ch)) `shouldBe`
+            [(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b')]
+        it "listOfTuples 2" $
+            listOfTuples `shouldBe` 
+            [(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b')]
+        it "guard" $
+            (guard (5 > 2) :: Maybe ()) `shouldBe` Just ()
+        it "guard 2" $
+            (guard (1 > 2) :: Maybe ()) `shouldBe` Nothing
+        it "guard 3" $
+            (guard (5 > 2) :: [()]) `shouldBe` [()]
+        it "guard 4" $
+            (guard (1 > 2) :: [()]) `shouldBe` []
+        it "guard 5" $
+            ([1..50] >>= (\x -> guard ('7' `elem` show x) >> return x)) `shouldBe`
+            [7, 17, 27, 37, 47]
+        it "guard 6" $
+            (guard (5 > 2) >> return "cool" :: [String]) `shouldBe`
+            ["cool"]
+        it "guard 7" $
+            (guard (1 > 2) >> return "cool" :: [String]) `shouldBe`
+            []
+        it "sevensOnly" $
+            sevensOnly `shouldBe`
+            [7, 17, 27, 37, 47]
+        it "moveKnight" $
+            moveKnight (8, 1) `shouldBe` [(6, 2), (7, 3)]
+        it "canReachIn3" $
+            (6, 2) `canReachIn3` (6, 1) `shouldBe` True
