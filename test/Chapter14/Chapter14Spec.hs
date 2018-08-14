@@ -8,6 +8,6 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-    describe "14.1 Writer? 中の人なんていません!" $ do
-        it "" $
-
+    describe "14.3 計算の状態の正体" $ do
+        it "stackManip" $
+           stackManip [5, 8, 2, 1] `shouldBe` (5, [8, 2, 1]) 
